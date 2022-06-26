@@ -81,7 +81,7 @@ jobs:
           cp package.json deploy
           cp package-lock.json deploy
           cp Dockerfile deploy
-          zip -r deploy.zip ./deploy
+          zip -r deploy.zip deploy
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
