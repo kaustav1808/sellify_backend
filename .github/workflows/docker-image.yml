@@ -11,6 +11,8 @@ jobs:
   build_test:
 
     runs-on: ubuntu-latest
+    env:
+      JWT_SECRET: secret
     strategy:
       matrix:
         node_version: [16.10.x] 
