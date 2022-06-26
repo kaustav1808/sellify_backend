@@ -92,8 +92,7 @@ jobs:
           environment_name: Sellifybackenddev-env
           version_label: 12345
           region: us-east-1
-          deployment_package: deploy.zip
-          use_existing_version_if_available: true              
+          deployment_package: deploy.zip              
 
     
     
