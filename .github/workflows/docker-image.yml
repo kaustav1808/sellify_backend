@@ -76,12 +76,12 @@ jobs:
 
       - name: Generate deployment package
         run: |
-          mkdir deploy
-          cp -r src deploy
-          cp package.json deploy
-          cp package-lock.json deploy
-          cp Dockerfile deploy
-          zip -r deploy.zip deploy
+          mkdir temp
+          cp -r src temp
+          cp package.json temp
+          cp package-lock.json temp
+          cp Dockerfile temp
+          zip -r deploy.zip temp
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
@@ -90,7 +90,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: sellify_backend_dev
           environment_name: Sellifybackenddev-env
-          version_label: code-pipeline-1656093978625-485c72c05578b3f1b20cb542611bad4a0a4d2d3d
+          version_label: version-2
           region: us-east-1
           deployment_package: deploy.zip              
 
