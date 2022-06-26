@@ -1,4 +1,4 @@
 module.exports = {
     rootDir:'./tests',
-    testTimeout:12000
+    testTimeout:6000
 }
