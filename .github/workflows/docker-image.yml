@@ -76,12 +76,7 @@ jobs:
 
       - name: Generate deployment package
         run: |
-          mkdir temp
-          cp -r src temp
-          cp package.json temp
-          cp package-lock.json temp
-          cp Dockerfile temp
-          zip -r deploy.zip temp
+          zip -r deploy.zip . -x '*.git*' -x 'tests/*' -x 'node_modules' -x '.github/*' -x 'jest.config.js' -x 'Dockerfile.dev'
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
