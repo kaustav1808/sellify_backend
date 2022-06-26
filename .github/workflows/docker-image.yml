@@ -77,8 +77,7 @@ jobs:
       - name: Generate deployment package
         run: |
           mkdir deploy
-          mkdir deploy/src
-          cp -r src deploy/src
+          cp -r src deploy
           cp package.json deploy
           cp package-lock.json deploy
           cp Dockerfile deploy
@@ -89,7 +88,7 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: sellify_backend_dev
+          application_name: Sellifybackenddev-env
           environment_name: Sellifybackenddev-env
           version_label: 12345
           region: us-west-1
