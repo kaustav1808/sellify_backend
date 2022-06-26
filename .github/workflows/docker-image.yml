@@ -90,7 +90,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: sellify_backend_dev
           environment_name: Sellifybackenddev-env
-          version_label: 12345
+          version_label: code-pipeline-1656093978625-485c72c05578b3f1b20cb542611bad4a0a4d2d3d
           region: us-east-1
           deployment_package: deploy.zip              
 
