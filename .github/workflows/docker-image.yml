@@ -76,17 +76,17 @@ jobs:
 
       - name: Generate deployment package
         run: |
-          zip -r deploy.zip . -x '*.git*' -x 'tests/*' -x 'node_modules' -x '.github/*' -x 'jest.config.js' -x 'Dockerfile.dev'
+          zip -r deploy.zip . -x '*.git*' -x 'tests/*' -x 'node_modules/*' -x '.github/*' -x 'jest.config.js' -x 'Dockerfile.dev'
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: sellify_backend_dev
-          environment_name: Sellifybackenddev-env
-          version_label: version-2
-          region: us-east-1
+          application_name: Sellify_app
+          environment_name: Sellifyapp-env
+          version_label: sellify_prod_deploy_pipeline_${{ github.sha }}_version
+          region: ap-south-1
           deployment_package: deploy.zip              
 
     
