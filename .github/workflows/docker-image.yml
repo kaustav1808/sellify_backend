@@ -88,7 +88,7 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: Sellifybackenddev-env
+          application_name: sellify_backend_dev
           environment_name: Sellifybackenddev-env
           version_label: 12345
           region: us-east-1
