@@ -11,7 +11,7 @@ app.use(cors({
 
 app.use(bodyparser.json())
 
-app.get("/",(req, res)=> res.status(200).send("success"))
+app.get("/",(req, res)=> res.status(200).send("welcome to sellify."))
 
 app.use("/api", router)
 
