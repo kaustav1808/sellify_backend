@@ -11,7 +11,7 @@ app.use(cors({
 
 app.use(bodyparser.json())
 
-app.use("/",(req, res)=> res.status(200).send("Success"))
+app.get("/",(req, res)=> res.status(200).send("success"))
 
 app.use("/api", router)
 
