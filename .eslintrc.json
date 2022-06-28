@@ -11,12 +11,10 @@
     "rules": {},
     "overrides": [
         {
-          "files": [
-            "**/*.test.js"
-          ],
-          "env": {
-            "jest": true
-          }
+            "files": ["**/*.test.js"],
+            "env": {
+                "jest": true
+            }
         }
-      ]
+    ]
 }

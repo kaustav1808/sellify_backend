@@ -39,4 +39,4 @@ jobs:
               run: npm run lint:check
 
             - name: check code is well formatted
-              run: npm run format:check              
+              run: npm run format:check

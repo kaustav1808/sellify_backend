@@ -12,8 +12,9 @@ const getDBName = () => {
 
 module.exports = {
     connect: async () => {
-        const url =
-            `${mongodbConnection + getDBName()  }?retryWrites=true&w=majority`
+        const url = `${
+            mongodbConnection + getDBName()
+        }?retryWrites=true&w=majority`
         return mongoose.connect(url)
     },
 }

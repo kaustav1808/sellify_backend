@@ -1,7 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const JwtStrategy = require('passport-jwt').Strategy
-const {ExtractJwt} = require('passport-jwt')
+const { ExtractJwt } = require('passport-jwt')
 const User = require('../models/User')
 const {
     checkIfTokenExpire,
@@ -47,7 +47,7 @@ passport.use(
 
 passport.use(
     'verify_token',
-    new JwtStrategy(opts, (async (req, jwtPayload, done) => {
+    new JwtStrategy(opts, async (req, jwtPayload, done) => {
         const user = await User.findOne({ _id: jwtPayload.userId })
 
         if (!user) {
@@ -67,7 +67,7 @@ passport.use(
         }
 
         return done(null, user)
-    }))
+    })
 )
 
 module.exports = passport

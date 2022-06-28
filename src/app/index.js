@@ -5,6 +5,7 @@ const app = express()
 const bodyparser = require('body-parser')
 const cors = require('cors')
 const router = require('./routes')
+const getError = require('./error')
 
 app.use(
     cors({
@@ -14,17 +15,14 @@ app.use(
 
 app.use(bodyparser.json())
 
-app.get('/', (req, res) => res.status(200).send('welcome to sellify.'))
+app.get('/', (_req, res) => res.status(200).send('welcome to sellify.'))
 
 app.use('/api', router)
 
-app.use((err, req, res) => {
-    if (err.status) {
-        res.status(err.status).json(err)
-    } else {
-        console.log(err)
-        res.status(500).json({ message: 'Internal server error' })
-    }
+// eslint-disable-next-line no-unused-vars
+app.use((err, _req, res, _next) => {
+    const error = getError(err.message)
+    res.status(error.status).json(error)
 })
 
 module.exports = app

@@ -15,7 +15,7 @@ router.post(
 )
 
 router.post('/signup', (req, res, done) => {
-    UserController.signUp(req, done)
+    UserController.signUp(req)
         .then((data) => res.status(201).json(data))
         .catch((err) => done(err, null))
 })

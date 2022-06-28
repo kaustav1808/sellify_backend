@@ -8,18 +8,19 @@ const {
     verifyRefreshToken,
 } = require('../services/auth')
 
-const signIn = async (req) => generateNewAccessToken(
-    // eslint-disable-next-line no-underscore-dangle
+const signIn = async (req) =>
+    generateNewAccessToken(
+        // eslint-disable-next-line no-underscore-dangle
         req.user._id,
         req.user.email,
         req.user.username
     )
 
-const signUp = async (req, done) => {
+const signUp = async (req) => {
     let user = await checkUserExists(req.body.email)
 
     if (user) {
-        return done({ status: 400, message: 'user already exists' }, false)
+        throw new Error('USER_EXISTS')
     }
 
     user = await createNewUser(

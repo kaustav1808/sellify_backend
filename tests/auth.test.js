@@ -23,8 +23,10 @@ describe('post /api/auth response', () => {
             email: 'kaustavtatai18h@gmail.com',
             password: '123456',
         })
+
         expect(response.statusCode).toBe(400)
-        expect(response.body.message).toBe('user already exists')
+        expect(response.body.message).toBe('user already exists.')
+        expect(response.body.code).toBe('USER_EXISTS')
     })
 })
 
