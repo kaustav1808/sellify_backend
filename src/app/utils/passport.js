@@ -47,8 +47,8 @@ passport.use(
 
 passport.use(
     'verify_token',
-    new JwtStrategy(opts, (async (req, jwt_payload, done) => {
-        const user = await User.findOne({ _id: jwt_payload.userId })
+    new JwtStrategy(opts, (async (req, jwtPayload, done) => {
+        const user = await User.findOne({ _id: jwtPayload.userId })
 
         if (!user) {
             return done({ status: 400, message: 'Unauthorize access' })

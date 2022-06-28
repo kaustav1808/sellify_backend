@@ -2,10 +2,10 @@ const request = require('supertest')
 const server = require('../src/app')
 const { db } = require('../src/config')
 
-let db_connection = null
+let dbConnection = null
 
 beforeAll(async () => {
-    db_connection = await db.connect()
+    dbConnection = await db.connect()
 })
 
 describe('post /api/auth response', () => {
@@ -29,6 +29,6 @@ describe('post /api/auth response', () => {
 })
 
 afterAll(async () => {
-    await db_connection.connection.db.dropDatabase()
-    await db_connection.connection.close()
+    await dbConnection.connection.db.dropDatabase()
+    await dbConnection.connection.close()
 })

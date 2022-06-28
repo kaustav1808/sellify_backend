@@ -8,7 +8,8 @@ const {
     verifyRefreshToken,
 } = require('../services/auth')
 
-const signIn = async (req) => await generateNewAccessToken(
+const signIn = async (req) => generateNewAccessToken(
+    // eslint-disable-next-line no-underscore-dangle
         req.user._id,
         req.user.email,
         req.user.username
@@ -41,7 +42,7 @@ const signOut = async (req) => {
     return 'Successfully logout!'
 }
 
-const getNewToken = async (req, done) => {
+const getNewToken = async (req) => {
     const token = await verifyRefreshToken(req.body.token)
     const user = await User.findOne({ _id: token.userId })
 
@@ -49,7 +50,8 @@ const getNewToken = async (req, done) => {
         throw new Error('User not exists')
     }
 
-    return await generateNewAccessToken(user._id, user.email, user.username)
+    // eslint-disable-next-line no-underscore-dangle
+    return generateNewAccessToken(user._id, user.email, user.username)
 }
 
 module.exports = { signIn, signUp, signOut, getNewToken }

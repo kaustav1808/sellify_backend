@@ -18,7 +18,7 @@ app.get('/', (req, res) => res.status(200).send('welcome to sellify.'))
 
 app.use('/api', router)
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     if (err.status) {
         res.status(err.status).json(err)
     } else {

@@ -6,27 +6,29 @@ const checkUserExists = async (email) => {
     const user = await User.findOne({ email }).exec()
 
     if (user) {
+        // eslint-disable-next-line no-underscore-dangle
         return { id: user._id, email: user.email, username: user.username }
     }
 
     return false
 }
 
+const generateNewPassword = async (user, password) => {
+    user.generateHash(password)
+    await user.save()
+}
+
 const createNewUser = async (email, username = null, password = null) => {
     const payload = { email, username: username || email }
-    user = new User(payload)
+    const user = new User(payload)
     await user.save()
 
     if (password) {
         await generateNewPassword(user, password)
     }
 
+    // eslint-disable-next-line no-underscore-dangle
     return { id: user._id, email: user.email, username: user.username }
-}
-
-const generateNewPassword = async (user, password) => {
-    user.generateHash(password)
-    await user.save()
 }
 
 const generateNewAccessToken = async (userId, email, username) => {
@@ -60,13 +62,13 @@ const getAuthorizationToken = (req) => {
 }
 
 const checkIfTokenExpire = async (token) => {
-    const token_existance = await UserToken.findOne({ accesstoken: token })
+    const tokenExistance = await UserToken.findOne({ accesstoken: token })
 
-    if (!token_existance) {
+    if (!tokenExistance) {
         return true
     }
 
-    const timedifference = new Date(token_existance.expiretime) - new Date()
+    const timedifference = new Date(tokenExistance.expiretime) - new Date()
     if (timedifference <= 0) {
         return true
     }
@@ -75,11 +77,11 @@ const checkIfTokenExpire = async (token) => {
 }
 
 const destroyCurrentToken = async (token) => {
-    const db_exists = await UserToken.findOne({
+    const dbExists = await UserToken.findOne({
         accesstoken: token,
     })
 
-    return await db_exists.deleteOne()
+    return dbExists.deleteOne()
 }
 
 const verifyRefreshToken = async (token) => {

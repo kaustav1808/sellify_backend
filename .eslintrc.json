@@ -8,7 +8,15 @@
     "parserOptions": {
         "ecmaVersion": "latest"
     },
-    "rules": {
-        "no-console": "warn"
-    }
+    "rules": {},
+    "overrides": [
+        {
+          "files": [
+            "**/*.test.js"
+          ],
+          "env": {
+            "jest": true
+          }
+        }
+      ]
 }
