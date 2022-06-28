@@ -34,3 +34,9 @@ jobs:
 
             - name: test app
               run: npm test
+
+            - name: check linting issue
+              run: npm run lint:check
+
+            - name: check code is well formatted
+              run: npm run format:check              
