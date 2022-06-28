@@ -1,45 +1,36 @@
 name: Sellify Backend production CI
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    push:
+        branches: ['master']
+    pull_request:
+        branches: ['master']
 
 jobs:
+    build_test:
+        runs-on: ubuntu-latest
+        env:
+            JWT_SECRET: secret
+        strategy:
+            matrix:
+                node_version: [16.10.x]
+                mongodb-version: ['5.0']
 
-  build_test:
+        steps:
+            - uses: actions/checkout@v3
 
-    runs-on: ubuntu-latest
-    env:
-      JWT_SECRET: secret
-    strategy:
-      matrix:
-        node_version: [16.10.x] 
-        mongodb-version: ['5.0']
+            - name: setup node
+              uses: actions/setup-node@master
+              with:
+                  node-version: ${{matrix.node_version}}
 
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: setup node
-      uses: actions/setup-node@master
-      with:
-        node-version: ${{matrix.node_version}}
-       
-    - name: Start MongoDB
-      uses: supercharge/mongodb-github-action@1.7.0
-      with:
-        mongodb-version: ${{ matrix.mongodb-version }}   
-        
-    - name: install app dependencies
-      run: npm install
-      
-    - name: test app
-      run : npm test
+            - name: Start MongoDB
+              uses: supercharge/mongodb-github-action@1.7.0
+              with:
+                  mongodb-version: ${{ matrix.mongodb-version }}
 
-  
+            - name: install app dependencies
+              run: npm install
 
-              
-
-    
-    
+            - name: test app
+              run: npm test

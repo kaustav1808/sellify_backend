@@ -1,28 +1,30 @@
-require("dotenv").config();
+require('dotenv').config()
 const express = require('express')
+
 const app = express()
-const router = require('./routes')
 const bodyparser = require('body-parser')
 const cors = require('cors')
+const router = require('./routes')
 
-app.use(cors({
-    origin: '*'
-}))
+app.use(
+    cors({
+        origin: '*',
+    })
+)
 
 app.use(bodyparser.json())
 
-app.get("/",(req, res)=> res.status(200).send("welcome to sellify."))
+app.get('/', (req, res) => res.status(200).send('welcome to sellify.'))
 
-app.use("/api", router)
+app.use('/api', router)
 
-app.use(function(err, req, res, next) {
-    if(err.status){
+app.use((err, req, res, next) => {
+    if (err.status) {
         res.status(err.status).json(err)
-    }else{
+    } else {
         console.log(err)
-        res.status(500).json({message:"Internal server error"})
+        res.status(500).json({ message: 'Internal server error' })
     }
-});
-
+})
 
 module.exports = app
