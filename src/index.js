@@ -6,7 +6,7 @@ const { db } = require('./config')
 
 db.connect()
     .then(() => {
-        console.log('Connection to the database successfully done..!!!')
+        console.log('Connection to the database successfully done.')
         app.listen(port, () => {
             console.log(`Express server is listening on port ${port}`)
         })
