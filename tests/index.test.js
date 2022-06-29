@@ -9,3 +9,12 @@ describe('get /api/ response', () => {
         expect(response.text).toBe('success')
     })
 })
+
+describe('get / response', () => {
+    test('It should send welcome message with 200 status.', async () => {
+        const response = await request(server).get('/')
+
+        expect(response.statusCode).toBe(200)
+        expect(response.text).toBe('welcome to sellify.')
+    })
+})
