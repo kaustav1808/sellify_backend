@@ -12,7 +12,6 @@ db.connect()
         })
     })
     .catch((e) => {
-        console.log("error")
         console.log(e)
         process.exit(1)
     })
