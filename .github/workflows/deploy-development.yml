@@ -49,9 +49,9 @@ jobs:
               with:
                   aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                  application_name: sellify_dev
+                  application_name: Sellify_dev
                   environment_name: Sellifydev-env
                   version_label: sellify_dev_deploy_pipeline_${{ github.sha }}_version
-                  region: ap-south-1
+                  region: us-east-1
                   deployment_package: deploy.zip
                   wait_for_environment_recovery: 120
