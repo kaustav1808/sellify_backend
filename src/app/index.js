@@ -7,6 +7,9 @@ const cors = require('cors')
 const router = require('./routes')
 const getError = require('./error')
 
+// eslint-disable-next-line no-console
+console.log(`Allowing origin : ${process.env.WEB_URL}`)
+
 app.use(
     cors({
         origin: process.env.WEB_URL,
