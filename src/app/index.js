@@ -9,7 +9,7 @@ const getError = require('./error')
 
 app.use(
     cors({
-        origin: '*',
+        origin: process.env.WEB_URL,
     })
 )
 
