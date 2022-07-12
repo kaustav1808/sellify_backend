@@ -6,13 +6,14 @@ const bodyparser = require('body-parser')
 const cors = require('cors')
 const router = require('./routes')
 const getError = require('./error')
+const {allowedOrigins} = require('../config')
 
 // eslint-disable-next-line no-console
-console.log(`Allowing origin : ${process.env.WEB_URL}`)
+console.log(`Allowing origin : ${allowedOrigins}`)
 
 app.use(
     cors({
-        origin: process.env.WEB_URL,
+        origin: allowedOrigins,
     })
 )
 
