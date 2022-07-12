@@ -4,5 +4,5 @@ const allowedOrigins = require('./allowedOrigins')
 
 module.exports = {
     db,
-    allowedOrigins
+    allowedOrigins,
 }

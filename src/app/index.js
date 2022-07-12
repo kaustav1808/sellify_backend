@@ -6,7 +6,7 @@ const bodyparser = require('body-parser')
 const cors = require('cors')
 const router = require('./routes')
 const getError = require('./error')
-const {allowedOrigins} = require('../config')
+const { allowedOrigins } = require('../config')
 
 // eslint-disable-next-line no-console
 console.log(`Allowing origin : ${allowedOrigins}`)
