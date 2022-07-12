@@ -62,7 +62,6 @@ passport.use(
                 return done({ status: 400, message: 'token expired' })
             }
         } catch (err) {
-            console.log(err)
             done(err, null)
         }
 
