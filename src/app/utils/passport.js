@@ -4,6 +4,12 @@ const JwtStrategy = require('passport-jwt').Strategy
 const { ExtractJwt } = require('passport-jwt')
 const User = require('../models/User')
 const {
+    SLFY_USER_NOT_FOUND,
+    SLFY_PASSWORD_NOT_MATCHED,
+    SLFY_UNAUTHORIZED_ACCESS,
+    SLFY_TOKEN_EXPIRED,
+} = require('../core/constant').error.AUTH
+const {
     checkIfTokenExpire,
     getAuthorizationToken,
     destroyCurrentToken,
@@ -30,12 +36,23 @@ passport.use(
             }
 
             if (!user) {
-                return done({ status: 400, message: 'user not found' }, false)
+                return done(
+                    {
+                        status: 401,
+                        message: 'User not found.',
+                        code: SLFY_USER_NOT_FOUND,
+                    },
+                    false
+                )
             }
 
             if (!user.verifyPassword(password)) {
                 return done(
-                    { status: 400, message: 'password not matched' },
+                    {
+                        status: 401,
+                        message: 'Password not matched',
+                        code: SLFY_PASSWORD_NOT_MATCHED,
+                    },
                     false
                 )
             }
@@ -51,7 +68,11 @@ passport.use(
         const user = await User.findOne({ _id: jwtPayload.userId })
 
         if (!user) {
-            return done({ status: 400, message: 'Unauthorize access' })
+            return done({
+                status: 401,
+                message: 'Unauthorize access',
+                code: SLFY_UNAUTHORIZED_ACCESS,
+            })
         }
 
         try {
@@ -59,7 +80,11 @@ passport.use(
             const checkTokenExpiration = await checkIfTokenExpire(token)
             if (checkTokenExpiration) {
                 await destroyCurrentToken(token)
-                return done({ status: 400, message: 'token expired' })
+                return done({
+                    status: 401,
+                    message: 'Token expired',
+                    code: SLFY_TOKEN_EXPIRED,
+                })
             }
         } catch (err) {
             done(err, null)

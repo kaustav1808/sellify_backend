@@ -24,9 +24,9 @@ describe('post /api/auth response', () => {
             password: '123456',
         })
 
-        expect(response.statusCode).toBe(400)
-        expect(response.body.message).toBe('user already exists.')
-        expect(response.body.code).toBe('USER_EXISTS')
+        expect(response.statusCode).toBe(409)
+        expect(response.body.message).toBe('User already exists')
+        expect(response.body.code).toBe('SLFY_USER_EXISTS')
     })
 })
 
