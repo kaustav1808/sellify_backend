@@ -7,6 +7,9 @@ const {
     getAuthorizationToken,
     verifyRefreshToken,
 } = require('../services/auth')
+const { SLFYError } = require('../core/error')
+const { SLFY_USER_EXISTS, SLFY_USER_NOT_EXISTS } =
+    require('../core/constant').error.AUTH
 
 const signIn = async (req) =>
     generateNewAccessToken(
@@ -20,7 +23,7 @@ const signUp = async (req) => {
     let user = await checkUserExists(req.body.email)
 
     if (user) {
-        throw new Error('USER_EXISTS')
+        throw new SLFYError(SLFY_USER_EXISTS, 'User already exists', 409)
     }
 
     user = await createNewUser(
@@ -48,7 +51,7 @@ const getNewToken = async (req) => {
     const user = await User.findOne({ _id: token.userId })
 
     if (!user) {
-        throw new Error('User not exists')
+        throw new SLFYError(SLFY_USER_NOT_EXISTS, 'User not exists', 409)
     }
 
     // eslint-disable-next-line no-underscore-dangle

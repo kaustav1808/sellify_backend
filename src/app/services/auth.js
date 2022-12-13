@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken')
+const { SLFYError } = require('../core/error')
 const User = require('../models/User')
 const UserToken = require('../models/UserToken')
+const { SLFY_CORRUPTED_TOKEN, SLFY_INVALID_TOKEN } =
+    require('../core/constant').error.AUTH
 
 const checkUserExists = async (email) => {
     const user = await User.findOne({ email }).exec()
@@ -56,7 +59,7 @@ const generateNewAccessToken = async (userId, email, username) => {
 const getAuthorizationToken = (req) => {
     const token = req.headers.authorization.split(' ')
     if (token.length !== 2) {
-        throw new Error('corrupted token')
+        throw new SLFYError(SLFY_CORRUPTED_TOKEN, 'Token corrupted.', 409)
     }
     return token[1]
 }
@@ -92,7 +95,7 @@ const verifyRefreshToken = async (token) => {
         refreshtoken: token,
     })
     if (!usrtoken) {
-        throw new Error('invalid token')
+        throw new SLFYError(SLFY_INVALID_TOKEN, 'Invalid token', 409)
     }
     return usrtoken
 }
