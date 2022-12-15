@@ -1,4 +1,5 @@
 const express = require('express')
+const Validate = require('../core/validation')
 
 const router = express.Router()
 const passport = require('../utils/passport')
@@ -6,6 +7,7 @@ const UserController = require('../controllers/auth')
 
 router.post(
     '/signin',
+    (req,_,next)=>Validate("AuthValidator", req, next),
     passport.authenticate('signin', { session: false }),
     (req, res, done) => {
         UserController.signIn(req)
