@@ -1,9 +1,9 @@
-const { error } = require('../constant')
+const { SLFY_VALIDATION_ERROR } = require('../constant').error.VALIDATION
 const SLFYError = require('./SLFYError')
 
 class SLFYValidationError extends SLFYError {
     constructor(message, errors) {
-        super(error.SLFY_VALIDATION_ERROR, message || 'Validation Error.', 402)
+        super(SLFY_VALIDATION_ERROR, message || 'Validation Error.', 402)
         this.errors = errors
     }
 
