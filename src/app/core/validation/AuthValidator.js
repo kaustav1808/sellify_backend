@@ -1,8 +1,7 @@
-const Joi = require("joi");
-const Validator = require("./Validator");
+const Joi = require('joi')
+const Validator = require('./Validator')
 
 class AuthValidator extends Validator {
-    
     // eslint-disable-next-line class-methods-use-this
     getOptions() {
         return {}

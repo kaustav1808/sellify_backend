@@ -8,7 +8,7 @@ const UserController = require('../controllers/auth')
 
 router.post(
     '/signin',
-    (req,_,next)=>Validate(new AuthValidator(), req, next),
+    (req, _, next) => Validate(new AuthValidator(), req, next),
     passport.authenticate('signin', { session: false }),
     (req, res, done) => {
         UserController.signIn(req)

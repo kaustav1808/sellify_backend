@@ -12,9 +12,9 @@ const error = {
         SLFY_INVALID_TOKEN: 'SLFY_INVALID_TOKEN',
     },
     VALIDATION: {
-        SLFY_NO_RULE_DEFINED: "SLFY_NO_RULE_DEFINED",
+        SLFY_NO_RULE_DEFINED: 'SLFY_NO_RULE_DEFINED',
         SLFY_VALIDATION_ERROR: 'SLFY_VALIDATION_ERROR',
-    }
+    },
 }
 
 module.exports = { error }

@@ -1,8 +1,8 @@
 const Validate = (validator, req, next) => {
-    try{
+    try {
         validator.run(req)
-        next(null,true)
-    }catch(e){
+        next(null, true)
+    } catch (e) {
         next(e, null)
     }
 }
