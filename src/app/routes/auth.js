@@ -17,7 +17,9 @@ router.post(
     }
 )
 
-router.post('/signup', (req, res, done) => {
+router.post('/signup',
+   (req, _, next) => Validate(new AuthValidator(), req, next),
+   (req, res, done) => {
     UserController.signUp(req)
         .then((data) => res.status(201).json(data))
         .catch((err) => done(err, null))
