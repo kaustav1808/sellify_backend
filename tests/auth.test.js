@@ -10,7 +10,7 @@ beforeAll(async () => {
 
 describe('post /api/auth response', () => {
     test('It should successfully register a user', async () => {
-        const response = await request(server).post('/api/auth/signup', {
+        const response = await request(server).post('/api/auth/signup').send({
             email: 'kaustavtatai18h@gmail.com',
             password: '123456',
         })
@@ -19,7 +19,7 @@ describe('post /api/auth response', () => {
     })
 
     test('It should send user exists', async () => {
-        const response = await request(server).post('/api/auth/signup', {
+        const response = await request(server).post('/api/auth/signup').send({
             email: 'kaustavtatai18h@gmail.com',
             password: '123456',
         })
