@@ -23,24 +23,32 @@ app.use(bodyparser.json())
 
 app.get('/', (_req, res) => res.status(200).send('welcome to sellify.'))
 
+app.use(
+    '/api',
+    (req, _, next) => {
+        logRequest(req)
+        next(null, true)
+    },
+    router
+)
 
-
-app.use('/api',(req,_,next)=>{logRequest(req);next(null,true)}, router)
-
-app.use((req, _, next) =>{
+app.use((req, _, next) => {
     next(
         new SLFYError(
             SLFY_ERROR_404,
             `${req.method} : ${req.path} path not found`,
             404
         )
-    )}
-)
+    )
+})
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {
     if (error instanceof SLFYError) {
-        SLFYLogger.error(`Error for request ${req.request_ID}`, error.getError())
+        SLFYLogger.error(
+            `Error for request ${req.request_ID}`,
+            error.getError()
+        )
         return res.status(error.getStatus()).json(error.getError())
     }
 
