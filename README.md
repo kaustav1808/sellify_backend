@@ -59,7 +59,7 @@ antique collection or priceless painting in auction. We provide an platform wher
 
 This section should list any major frameworks/libraries used to bootstrap your project.
 
-[![Node JS][node.js]][node-url] [![Express JS][express.js]][express-url] [![Jest][jest.js]][jest-url] [![JWT][jwt]][jwt-url]   [![MongoDB][mongodb]][mongodb-url]
+[![Node JS][node.js]][node-url] [![Express JS][express.js]][express-url] [![Jest][jest.js]][jest-url] [![JWT][jwt]][jwt-url] [![MongoDB][mongodb]][mongodb-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -167,7 +167,6 @@ Project Link: [https://github.com/kaustav1808/sellify_backend](https://github.co
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
 -   [GitHub Badges Collection](https://github.com/alexandresanlim/Badges4-README.md-Profile)
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
