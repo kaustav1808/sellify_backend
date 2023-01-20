@@ -51,8 +51,7 @@
 Here in Sellify you can sell and buy second hand products near your location. You can also raise your
 antique collection or priceless painting in auction. We provide an platform where buyer and seller can easily connect. We provide unique and trustable service to sell your unused item. Use sellify in very reasonable cost.
 
--- This repository is created for the backend API services of Sellify(https://www.sell-ify.co.in/)     
-
+-- This repository is created for the backend API services of Sellify(https://www.sell-ify.co.in/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
