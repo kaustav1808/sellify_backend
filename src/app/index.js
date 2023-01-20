@@ -34,11 +34,10 @@ app.use(
     router
 )
 
-if(process.env.API_DOC_SHOWABLE === "true") {
+if (process.env.API_DOC_SHOWABLE === 'true') {
     const specs = swaggerJsdoc(apiDoc(process.env.PORT || 8000))
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 }
-
 
 app.use((req, _, next) => {
     next(
