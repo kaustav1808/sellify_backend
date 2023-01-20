@@ -59,7 +59,7 @@ antique collection or priceless painting in auction. We provide an platform wher
 
 This section should list any major frameworks/libraries used to bootstrap your project.
 
-[![Node JS][node.js]][node-url] [![Express JS][express.js]][express-url]
+[![Node JS][node.js]][node-url]   [![Express JS][express.js]][express-url]   [![Jest][jest.js]][jest-url]   [![JWT][jwt]][jwt-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -184,3 +184,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [node-url]: https://nodejs.org/en/
 [express.js]: https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white
 [express-url]: https://expressjs.com/
+[jest.js]: https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white
+[jest-url]: https://jestjs.io/
+[jwt]: https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white
+[jwt-url]: https://jwt.io/
