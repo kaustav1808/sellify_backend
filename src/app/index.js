@@ -23,7 +23,7 @@ app.use(
 
 app.use(bodyparser.json())
 
-app.get('/', (_req, res) => res.status(200).send('welcome to sellify.'))
+app.get('/', (_req, res) => res.status(200).send('Welcome to sellify.'))
 
 app.use(
     '/api',
