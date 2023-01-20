@@ -59,7 +59,7 @@ antique collection or priceless painting in auction. We provide an platform wher
 
 This section should list any major frameworks/libraries used to bootstrap your project.
 
-[![Node JS][node.js]][node-url]  [![Express JS][express.js]][express-url]
+[![Node JS][node.js]][node-url] [![Express JS][express.js]][express-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -180,10 +180,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/kaustav-bhattacharya-839544133/
 [product-screenshot]: images/ss.png
-
 [node.js]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
 [node-url]: https://nodejs.org/en/
-
 [express.js]: https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white
 [express-url]: https://expressjs.com/
-
