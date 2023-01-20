@@ -59,7 +59,7 @@ antique collection or priceless painting in auction. We provide an platform wher
 
 This section should list any major frameworks/libraries used to bootstrap your project.
 
-[![Node JS][node.js]][node-url]   [![Express JS][express.js]][express-url]   [![Jest][jest.js]][jest-url]   [![JWT][jwt]][jwt-url]
+[![Node JS][node.js]][node-url] [![Express JS][express.js]][express-url] [![Jest][jest.js]][jest-url] [![JWT][jwt]][jwt-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
