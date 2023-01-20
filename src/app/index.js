@@ -2,8 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const bodyparser = require('body-parser')
 const cors = require('cors')
-const swaggerJsdoc = require("swagger-jsdoc")
-const swaggerUi = require("swagger-ui-express")
+const swaggerJsdoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
 const router = require('./routes')
 const { allowedOrigins, apiDoc } = require('../config')
 const { SLFYError } = require('./core/error')
@@ -34,12 +34,8 @@ app.use(
     router
 )
 
-const specs = swaggerJsdoc(apiDoc(process.env.PORT || 8000));
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(specs)
-);
+const specs = swaggerJsdoc(apiDoc(process.env.PORT || 8000))
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 app.use((req, _, next) => {
     next(
