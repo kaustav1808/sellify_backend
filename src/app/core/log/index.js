@@ -1,18 +1,23 @@
-const {format, createLogger, transports  } = require('winston')
+const { format, createLogger, transports } = require('winston')
 const { v4: uuidv4 } = require('uuid')
 
 const formatConf = format.combine(
-        format.timestamp({ format: "DD-MM-YYYY HH:mm:ss" }),
-        format.json(),
-        format.printf((obj) =>`[${obj.timestamp}#${obj.code || "SLFY_LOG"}][${obj.level}]: ${obj.message}`
-      ));
+    format.timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
+    format.json(),
+    format.printf(
+        (obj) =>
+            `[${obj.timestamp}#${obj.code || 'SLFY_LOG'}][${obj.level}]: ${
+                obj.message
+            }`
+    )
+)
 
 const infoLogger = createLogger({
     level: 'info',
     transports: [
         new transports.File({
             name: 'info-file',
-            filename: 'log/filelog-info.log', 
+            filename: 'log/filelog-info.log',
         }),
     ],
     format: formatConf,
@@ -30,16 +35,20 @@ const errorLogger = createLogger({
 })
 
 const SLFYLogger = {
-    info: (msg, meta={}) => infoLogger.info(msg, meta),
-    error: (msg, meta={}) => errorLogger.error(msg, meta), 
+    info: (msg, meta = {}) => infoLogger.info(msg, meta),
+    error: (msg, meta = {}) => errorLogger.error(msg, meta),
 }
 
 const logRequest = (req) => {
     const reqId = uuidv4()
     req.request_ID = reqId
     SLFYLogger.info(`New ${req.protocol} request ID ${reqId}, path ${req.path}`)
-    if (req.params) SLFYLogger.info(`Request ID ${reqId}, params ${JSON.stringify(req.params)}`)
-    if (req.body) SLFYLogger.info(`Request ID ${reqId}, body ${JSON.stringify(req.body)}`)
+    if (req.params)
+        SLFYLogger.info(
+            `Request ID ${reqId}, params ${JSON.stringify(req.params)}`
+        )
+    if (req.body)
+        SLFYLogger.info(`Request ID ${reqId}, body ${JSON.stringify(req.body)}`)
 }
 
 module.exports = { SLFYLogger, logRequest }

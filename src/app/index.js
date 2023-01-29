@@ -60,7 +60,10 @@ app.use((error, req, res, _next) => {
     }
 
     const newError = new SLFYError(error.code, error.message, error.status)
-    SLFYLogger.error(`Error for request ${req.request_ID},`, newError.getError())
+    SLFYLogger.error(
+        `Error for request ${req.request_ID},`,
+        newError.getError()
+    )
     return res.status(newError.getStatus()).json(newError.getError())
 })
 
