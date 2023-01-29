@@ -15,6 +15,6 @@ describe('get / response', () => {
         const response = await request(server).get('/')
 
         expect(response.statusCode).toBe(200)
-        expect(response.text).toBe('welcome to sellify.')
+        expect(response.text).toBe('Welcome to sellify.')
     })
 })
