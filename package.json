@@ -1,8 +1,8 @@
 {
-    "name": "Sellify",
+    "name": "sellify",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "description": "This repository is created for the backend API service of Sellify app.",
+    "main": "src/index.js",
     "scripts": {
         "dev": "nodemon src",
         "start": "node src",
@@ -13,7 +13,7 @@
         "lint:fix": "eslint --fix .",
         "prepare": "husky install"
     },
-    "author": "",
+    "author": "Kaustav Bhattacharya",
     "license": "ISC",
     "dependencies": {
         "bcryptjs": "^2.4.3",
