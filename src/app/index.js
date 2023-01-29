@@ -53,14 +53,17 @@ app.use((req, _, next) => {
 app.use((error, req, res, _next) => {
     if (error instanceof SLFYError) {
         SLFYLogger.error(
-            `Error for request ${req.request_ID}`,
+            `Error for request ${req.request_ID},`,
             error.getError()
         )
         return res.status(error.getStatus()).json(error.getError())
     }
 
     const newError = new SLFYError(error.code, error.message, error.status)
-    SLFYLogger.error(`Error for request ${req.request_ID}`, newError.getError())
+    SLFYLogger.error(
+        `Error for request ${req.request_ID},`,
+        newError.getError()
+    )
     return res.status(newError.getStatus()).json(newError.getError())
 })
 

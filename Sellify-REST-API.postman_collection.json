@@ -1,0 +1,251 @@
+{
+    "info": {
+        "_postman_id": "2478d5dc-04e6-42c7-a754-f2479a4f9efe",
+        "name": "Sellify-REST-API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "/auth/signup",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = JSON.parse(responseBody);\r",
+                                    "\r",
+                                    "if(jsonData.newtoken && jsonData.newtoken.accesstoken) {\r",
+                                    "    postman.__execution.collectionVariables.set(\"accesstoken\", jsonData.newtoken.accesstoken);\r",
+                                    "}\r",
+                                    "\r",
+                                    "if(jsonData.newtoken && jsonData.newtoken.refreshtoken) {\r",
+                                    "    postman.__execution.collectionVariables.set(\"refreshtoken\", jsonData.newtoken.refreshtoken);\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\": \"abc.xyz@example.com\",\r\n    \"password\": \"secret123456\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/auth/signup",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["auth", "signup"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/signin",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = JSON.parse(responseBody);\r",
+                                    "\r",
+                                    "if(jsonData.accesstoken) {\r",
+                                    "    postman.__execution.collectionVariables.set(\"accesstoken\", jsonData.accesstoken);\r",
+                                    "}\r",
+                                    "\r",
+                                    "if(jsonData.refreshtoken) {\r",
+                                    "    postman.__execution.collectionVariables.set(\"refreshtoken\", jsonData.refreshtoken);\r",
+                                    "}\r",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\": \"abc.xyz@example.com\",\r\n    \"password\": \"secret123456\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/auth/signin",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["auth", "signin"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/signout",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "postman.__execution.collectionVariables.set(\"accesstoken\",\"\");\r",
+                                    "postman.__execution.collectionVariables.set(\"refreshtoken\",\"\");"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/auth/signout",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["auth", "signout"]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "auth": {
+                "type": "noauth"
+            },
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Auction",
+            "item": [
+                {
+                    "name": "auction",
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"title\": \"abcd\",\r\n    \"shortDescription\": \"skfpsfpo\",\r\n    \"description\": \"abcd\",\r\n    \"sellType\": \"range\",\r\n    \"minPrice\": 500,\r\n    \"maxPrice\": 700,\r\n    \"tags\": [\"a\",\"v\"]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/auction",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["auction"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "host",
+            "value": "http://localhost",
+            "type": "default"
+        },
+        {
+            "key": "port",
+            "value": "8080",
+            "type": "default"
+        },
+        {
+            "key": "prefix",
+            "value": "/api",
+            "type": "default"
+        },
+        {
+            "key": "accesstoken",
+            "value": ""
+        },
+        {
+            "key": "refreshtoken",
+            "value": ""
+        }
+    ]
+}
