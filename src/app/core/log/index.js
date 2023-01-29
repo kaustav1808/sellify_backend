@@ -42,7 +42,7 @@ const SLFYLogger = {
 const logRequest = (req) => {
     const reqId = uuidv4()
     req.request_ID = reqId
-    SLFYLogger.info(`New ${req.protocol} request ID ${reqId}, path ${req.path}`)
+    SLFYLogger.info(`New ${req.protocol} request ID ${reqId}, path ${req.method}:: ${req.path}`)
     if (req.params)
         SLFYLogger.info(
             `Request ID ${reqId}, params ${JSON.stringify(req.params)}`
