@@ -14,7 +14,7 @@ class ItemCreateValidator extends Validator {
             shortDescription: Joi.string().required(),
             description: Joi.string().required(),
             tags: Joi.string().required(),
-            sellType: Joi.string().valid("range", "auction").required(),
+            sellType: Joi.string().valid('range', 'auction').required(),
             minPrice: Joi.number().min(0).required(),
             maxPrice: Joi.number().required(),
         }
