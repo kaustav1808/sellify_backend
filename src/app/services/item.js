@@ -19,10 +19,10 @@ const getShortItem = (item) => ({
 
 const modifyItemDetails = async (updatable, updatableOwner) => {
     const { id } = updatable
-    const modifiableEntity = Item.findById(id)
-
-    // eslint-disable-next-line dot-notation
-    if (modifiableEntity.owner['_id'] !== updatableOwner.id)
+    const modifiableEntity = await Item.findById(id)
+    
+    // eslint-disable-next-line no-underscore-dangle
+    if (!modifiableEntity.owner._id.equals(updatableOwner.id))
         throw new SLFYError(
             SLFY_UPDATING_INVALID_ENTITY,
             'Updating an unauthorized entity not permitted',
