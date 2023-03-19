@@ -20,7 +20,7 @@ const getShortItem = (item) => ({
 const modifyItemDetails = async (updatable, updatableOwner) => {
     const { id } = updatable
     const modifiableEntity = await Item.findById(id)
-    
+
     // eslint-disable-next-line no-underscore-dangle
     if (!modifiableEntity.owner._id.equals(updatableOwner.id))
         throw new SLFYError(
