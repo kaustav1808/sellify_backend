@@ -1,5 +1,5 @@
 const Item = require('../models/Item')
-const { getShortItem } = require('../services/item')
+const { getShortItem, modifyItemDetails } = require('../services/item')
 
 const itemList = async () =>
     (await Item.find({})).map((item) => getShortItem(item))
@@ -19,18 +19,6 @@ const createItem = async (req) => {
     return getShortItem(await Item.create(newItem))
 }
 
-const updateItem = async (req) => {
-    const newItem = {}
-    newItem.title = req.body.title
-    newItem.shortDescription = req.body.shortDescription
-    newItem.description = req.body.description
-    newItem.tags = req.body.tags
-    newItem.sellType = req.body.sellType
-    newItem.status = 'open'
-    newItem.minPrice = Number(req.body.minPrice)
-    newItem.maxPrice = Number(req.body.maxPrice)
-
-    return getShortItem(await Item.create(newItem))
-}
+const updateItem = async (req) => modifyItemDetails(req.body, req.user)
 
 module.exports = { itemList, createItem, updateItem }

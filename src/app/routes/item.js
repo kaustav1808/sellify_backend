@@ -23,4 +23,14 @@ router.post(
     }
 )
 
+router.put(
+    '/',
+    passport.authenticate('verify_token', { session: false }),
+    (req, res, done) => {
+        ItemController.createItem(req)
+            .then((result) => res.status(200).json(result))
+            .catch((err) => done(err, null))
+    }
+)
+
 module.exports = router

@@ -15,6 +15,11 @@ const error = {
         SLFY_NO_RULE_DEFINED: 'SLFY_NO_RULE_DEFINED',
         SLFY_VALIDATION_ERROR: 'SLFY_VALIDATION_ERROR',
     },
+    ITEM: {
+        UPDATE: {
+            SLFY_UPDATING_INVALID_ENTITY: 'SLFY_UPDATING_INVALID_ENTITY'
+        }
+    }
 }
 
 module.exports = { error }
