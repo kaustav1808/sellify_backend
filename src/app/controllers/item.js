@@ -1,7 +1,8 @@
 const Item = require('../models/Item')
 const { getShortItem } = require('../services/item')
 
-const itemList = async () => (await Item.find({})).map(item=>getShortItem(item))
+const itemList = async () =>
+    (await Item.find({})).map((item) => getShortItem(item))
 
 const createItem = async (req) => {
     const newItem = {}
@@ -13,7 +14,7 @@ const createItem = async (req) => {
     newItem.status = 'open'
     newItem.minPrice = Number(req.body.minPrice)
     newItem.maxPrice = Number(req.body.maxPrice)
-    newItem.owner = { ...req.user, "_id":req.user.id}
+    newItem.owner = { ...req.user, _id: req.user.id }
 
     return getShortItem(await Item.create(newItem))
 }

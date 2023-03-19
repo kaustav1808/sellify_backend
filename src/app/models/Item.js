@@ -18,7 +18,7 @@ const ItemSchema = Schema({
         _id: mongoose.ObjectId,
         email: String,
         username: String,
-    }
+    },
 })
 
 module.exports = mongoose.model('Item', ItemSchema)

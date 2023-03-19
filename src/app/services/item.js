@@ -12,4 +12,4 @@ const getShortItem = (item) => ({
     created_at: item.created_at,
 })
 
-module.exports = {getShortItem}
+module.exports = { getShortItem }
