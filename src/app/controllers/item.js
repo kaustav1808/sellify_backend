@@ -1,5 +1,5 @@
 const Item = require('../models/Item')
-const { getShortItem, modifyItemDetails } = require('../services/item')
+const { getShortItem, modifyItemDetails, archiveItem } = require('../services/item')
 
 const itemList = async () =>
     (await Item.find({})).map((item) => getShortItem(item))
@@ -21,4 +21,6 @@ const createItem = async (req) => {
 
 const updateItem = async (req) => modifyItemDetails(req.body, req.user)
 
-module.exports = { itemList, createItem, updateItem }
+const setItemToArchive = async (req) => archiveItem(req.params.id, req.user)
+
+module.exports = { itemList, createItem, updateItem, setItemToArchive  }
