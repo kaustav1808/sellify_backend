@@ -1,7 +1,6 @@
 const { SLFYError } = require('../core/error')
 const Item = require('../models/Item')
-const { SLFY_ACCESSING_INVALID_ITEM } =
-    require('../core/constant').error.ITEM
+const { SLFY_ACCESSING_INVALID_ITEM } = require('../core/constant').error.ITEM
 
 const getShortItem = (item) => ({
     // eslint-disable-next-line no-underscore-dangle
@@ -19,9 +18,9 @@ const getShortItem = (item) => ({
 })
 
 const checkValidItemByID = async (id, accessableOwner) => {
-    const item = await Item.findOne({_id:id, deleted_at: {$eq:null}})
+    const item = await Item.findOne({ _id: id, deleted_at: { $eq: null } })
 
-    if(!item) {
+    if (!item) {
         throw new SLFYError(
             SLFY_ACCESSING_INVALID_ITEM,
             'The item is not exists',
@@ -41,7 +40,10 @@ const checkValidItemByID = async (id, accessableOwner) => {
 }
 
 const modifyItemDetails = async (updatable, updatableOwner) => {
-    const modifiableEntity = await checkValidItemByID(updatable.id, updatableOwner)
+    const modifiableEntity = await checkValidItemByID(
+        updatable.id,
+        updatableOwner
+    )
 
     if (updatable.title) modifiableEntity.title = updatable.title
 

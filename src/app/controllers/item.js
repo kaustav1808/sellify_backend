@@ -7,7 +7,9 @@ const {
 } = require('../services/item')
 
 const itemList = async () =>
-    (await Item.find({deleted_at:{$eq:null}})).map((item) => getShortItem(item))
+    (await Item.find({ deleted_at: { $eq: null } })).map((item) =>
+        getShortItem(item)
+    )
 
 const createItem = async (req) => {
     const newItem = {}
@@ -30,4 +32,10 @@ const setItemToArchive = async (req) => archiveItem(req.params.id, req.user)
 
 const deleteItem = async (req) => removeItem(req.params.id, req.user)
 
-module.exports = { itemList, createItem, updateItem, setItemToArchive, deleteItem }
+module.exports = {
+    itemList,
+    createItem,
+    updateItem,
+    setItemToArchive,
+    deleteItem,
+}
