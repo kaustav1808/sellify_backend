@@ -12,11 +12,11 @@ class ItemCreateValidator extends Validator {
         return {
             title: Joi.string().required(),
             shortDescription: Joi.string().required(),
-            description: Joi.string().required(),
-            tags: Joi.string().required(),
+            description:  Joi.string(),
+            tags: Joi.array().items(Joi.string()),
             sellType: Joi.string().valid('range', 'auction').required(),
-            minPrice: Joi.number().min(0).required(),
-            maxPrice: Joi.number().required(),
+            minPrice: Joi.alternatives().conditional('sellType', {is: "range", then: Joi.number().min(0).required()}),
+            maxPrice: Joi.number().min(0).required(),
         }
     }
 }

@@ -1,19 +1,7 @@
 const Item = require('../models/Item')
+const { getShortItem } = require('../services/item')
 
-const itemList = async () =>
-    (await Item.find({})).map((o) => ({
-        // eslint-disable-next-line no-underscore-dangle
-        id: o._id,
-        title: o.title,
-        shortDescription: o.shortDescription,
-        description: o.description,
-        tags: o.tags,
-        sellType: o.sellType,
-        status: o.status,
-        minPrice: o.minPrice,
-        maxPrice: o.maxPrice,
-        created_at: o.created_at,
-    }))
+const itemList = async () => (await Item.find({})).map(item=>getShortItem(item))
 
 const createItem = async (req) => {
     const newItem = {}
@@ -25,8 +13,23 @@ const createItem = async (req) => {
     newItem.status = 'open'
     newItem.minPrice = Number(req.body.minPrice)
     newItem.maxPrice = Number(req.body.maxPrice)
+    newItem.owner = { ...req.user, "_id":req.user.id}
 
-    return Item.create(newItem)
+    return getShortItem(await Item.create(newItem))
 }
 
-module.exports = { itemList, createItem }
+const updateItem = async (req) => {
+    const newItem = {}
+    newItem.title = req.body.title
+    newItem.shortDescription = req.body.shortDescription
+    newItem.description = req.body.description
+    newItem.tags = req.body.tags
+    newItem.sellType = req.body.sellType
+    newItem.status = 'open'
+    newItem.minPrice = Number(req.body.minPrice)
+    newItem.maxPrice = Number(req.body.maxPrice)
+
+    return getShortItem(await Item.create(newItem))
+}
+
+module.exports = { itemList, createItem, updateItem }
