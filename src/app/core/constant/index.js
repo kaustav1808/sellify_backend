@@ -17,9 +17,9 @@ const error = {
     },
     ITEM: {
         UPDATE: {
-            SLFY_UPDATING_INVALID_ENTITY: 'SLFY_UPDATING_INVALID_ENTITY'
-        }
-    }
+            SLFY_UPDATING_INVALID_ENTITY: 'SLFY_UPDATING_INVALID_ENTITY',
+        },
+    },
 }
 
 module.exports = { error }

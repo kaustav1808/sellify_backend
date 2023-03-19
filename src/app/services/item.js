@@ -1,6 +1,7 @@
-const { SLFYError } = require("../core/error")
-const Item = require("../models/Item")
-const {SLFY_UPDATING_INVALID_ENTITY} = require('../core/constant').error.ITEM.UPDATE
+const { SLFYError } = require('../core/error')
+const Item = require('../models/Item')
+const { SLFY_UPDATING_INVALID_ENTITY } =
+    require('../core/constant').error.ITEM.UPDATE
 
 const getShortItem = (item) => ({
     // eslint-disable-next-line no-underscore-dangle
@@ -17,18 +18,22 @@ const getShortItem = (item) => ({
 })
 
 const modifyItemDetails = async (updatable, updatableOwner) => {
-   const {id} = updatable
-   const modifiableEntity = Item.findById(id)
+    const { id } = updatable
+    const modifiableEntity = Item.findById(id)
 
-   // eslint-disable-next-line dot-notation
-   if (modifiableEntity.owner["_id"] !== updatableOwner.id ) 
-     throw new SLFYError(SLFY_UPDATING_INVALID_ENTITY, 'Updating an unauthorized entity not permitted', 403)
+    // eslint-disable-next-line dot-notation
+    if (modifiableEntity.owner['_id'] !== updatableOwner.id)
+        throw new SLFYError(
+            SLFY_UPDATING_INVALID_ENTITY,
+            'Updating an unauthorized entity not permitted',
+            403
+        )
 
-   if(updatable.title) modifiableEntity.title = updatable.title
+    if (updatable.title) modifiableEntity.title = updatable.title
 
-   await modifiableEntity.save()
+    await modifiableEntity.save()
 
-   return getShortItem(modifiableEntity)
+    return getShortItem(modifiableEntity)
 }
 
 module.exports = { getShortItem, modifyItemDetails }
