@@ -1,7 +1,7 @@
 const { SLFYError } = require('../core/error')
 const Item = require('../models/Item')
-const { SLFY_UPDATING_INVALID_ENTITY } =
-    require('../core/constant').error.ITEM.UPDATE
+const { SLFY_ACCESSING_INVALID_ITEM } =
+    require('../core/constant').error.ITEM
 
 const getShortItem = (item) => ({
     // eslint-disable-next-line no-underscore-dangle
@@ -18,17 +18,30 @@ const getShortItem = (item) => ({
     updated_at: item.updated_at,
 })
 
-const modifyItemDetails = async (updatable, updatableOwner) => {
-    const { id } = updatable
-    const modifiableEntity = await Item.findById(id)
+const checkValidItemByID = async (id, accessableOwner) => {
+    const item = await Item.findOne({_id:id, deleted_at: {$eq:null}})
 
-    // eslint-disable-next-line no-underscore-dangle
-    if (!modifiableEntity.owner._id.equals(updatableOwner.id))
+    if(!item) {
         throw new SLFYError(
-            SLFY_UPDATING_INVALID_ENTITY,
-            'Updating an unauthorized entity not permitted',
+            SLFY_ACCESSING_INVALID_ITEM,
+            'The item is not exists',
             403
         )
+    }
+
+    // eslint-disable-next-line no-underscore-dangle
+    if (!item.owner._id.equals(accessableOwner.id))
+        throw new SLFYError(
+            SLFY_ACCESSING_INVALID_ITEM,
+            'Updating an unauthorized item.',
+            403
+        )
+
+    return item
+}
+
+const modifyItemDetails = async (updatable, updatableOwner) => {
+    const modifiableEntity = await checkValidItemByID(updatable.id, updatableOwner)
 
     if (updatable.title) modifiableEntity.title = updatable.title
 
@@ -40,15 +53,7 @@ const modifyItemDetails = async (updatable, updatableOwner) => {
 }
 
 const archiveItem = async (id, updatableOwner) => {
-    const modifiableEntity = await Item.findById(id)
-
-    // eslint-disable-next-line no-underscore-dangle
-    if (!modifiableEntity.owner._id.equals(updatableOwner.id))
-        throw new SLFYError(
-            SLFY_UPDATING_INVALID_ENTITY,
-            'Updating an unauthorized entity not permitted',
-            403
-        )
+    const modifiableEntity = await checkValidItemByID(id, updatableOwner)
 
     modifiableEntity.is_archive = true
     modifiableEntity.updated_at = new Date()
@@ -58,4 +63,14 @@ const archiveItem = async (id, updatableOwner) => {
     return getShortItem(modifiableEntity, true)
 }
 
-module.exports = { getShortItem, modifyItemDetails, archiveItem }
+const removeItem = async (id, updatableOwner) => {
+    const modifiableEntity = await checkValidItemByID(id, updatableOwner)
+
+    modifiableEntity.deleted_at = new Date()
+
+    await modifiableEntity.save()
+
+    return true
+}
+
+module.exports = { getShortItem, modifyItemDetails, archiveItem, removeItem }
