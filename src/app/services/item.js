@@ -32,7 +32,7 @@ const modifyItemDetails = async (updatable, updatableOwner) => {
 
     if (updatable.title) modifiableEntity.title = updatable.title
 
-    modifiableEntity.updated_at = new Date();
+    modifiableEntity.updated_at = new Date()
 
     await modifiableEntity.save()
 
@@ -51,7 +51,7 @@ const archiveItem = async (id, updatableOwner) => {
         )
 
     modifiableEntity.is_archive = true
-    modifiableEntity.updated_at = new Date();
+    modifiableEntity.updated_at = new Date()
 
     await modifiableEntity.save()
 

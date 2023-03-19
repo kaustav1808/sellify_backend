@@ -9,7 +9,7 @@ const ItemSchema = Schema({
     tags: [String],
     sellType: { type: String, enum: ['range', 'auction'] },
     status: { type: String, enum: ['open', 'close'] },
-    is_archive: { type:Boolean, default:false},
+    is_archive: { type: Boolean, default: false },
     minPrice: Number,
     maxPrice: Number,
     deleted_at: { type: Date, default: null },
