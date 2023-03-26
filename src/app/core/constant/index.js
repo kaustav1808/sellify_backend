@@ -17,6 +17,7 @@ const error = {
     },
     ITEM: {
         SLFY_ACCESSING_INVALID_ITEM: 'SLFY_ACCESSING_INVALID_ITEM',
+        SLFY_INVALID_ITEM: 'SLFY_INVALID_ITEM',
     },
 }
 

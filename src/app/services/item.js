@@ -1,6 +1,6 @@
 const { SLFYError } = require('../core/error')
 const Item = require('../models/Item')
-const { SLFY_ACCESSING_INVALID_ITEM } = require('../core/constant').error.ITEM
+const { SLFY_ACCESSING_INVALID_ITEM, SLFY_INVALID_ITEM } = require('../core/constant').error.ITEM
 
 const getShortItem = (item) => ({
     // eslint-disable-next-line no-underscore-dangle
@@ -17,16 +17,22 @@ const getShortItem = (item) => ({
     updated_at: item.updated_at,
 })
 
-const checkValidItemByID = async (id, accessableOwner) => {
-    const item = await Item.findOne({ _id: id, deleted_at: { $eq: null } })
+const getItemById = async(id) => {
+    const item = await Item.findOne({ _id: id, deleted_at: { $eq: null } }) 
 
     if (!item) {
         throw new SLFYError(
-            SLFY_ACCESSING_INVALID_ITEM,
+            SLFY_INVALID_ITEM,
             'The item is not exists',
             403
         )
     }
+
+    return item 
+}
+
+const checkValidItemByID = async (id, accessableOwner) => {
+    const item = getItemById(id)
 
     // eslint-disable-next-line no-underscore-dangle
     if (!item.owner._id.equals(accessableOwner.id))
@@ -75,4 +81,4 @@ const removeItem = async (id, updatableOwner) => {
     return true
 }
 
-module.exports = { getShortItem, modifyItemDetails, archiveItem, removeItem }
+module.exports = { getItemById, getShortItem, modifyItemDetails, archiveItem, removeItem }

@@ -1,5 +1,6 @@
 const Item = require('../models/Item')
 const {
+    getItemById,
     getShortItem,
     modifyItemDetails,
     archiveItem,
@@ -32,7 +33,10 @@ const setItemToArchive = async (req) => archiveItem(req.params.id, req.user)
 
 const deleteItem = async (req) => removeItem(req.params.id, req.user)
 
+const findItemById = async (req) => getItemById(req.params.id)
+
 module.exports = {
+    findItemById,
     itemList,
     createItem,
     updateItem,

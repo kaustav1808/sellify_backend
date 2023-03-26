@@ -12,6 +12,15 @@ router.get('/', (req, res, done) => {
         .catch((err) => done(err, null))
 })
 
+router.get(
+    '/:id',
+    (req, res, done) => {
+        ItemController.findItemById(req)
+            .then((result) => res.status(200).json(result))
+            .catch((err) => done(err, null))
+    }
+)
+
 router.post(
     '/',
     passport.authenticate('verify_token', { session: false }),
