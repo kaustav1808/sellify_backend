@@ -1,7 +1,10 @@
 const { SLFYError } = require('../core/error')
 const Item = require('../models/Item')
-const { SLFY_ACCESSING_INVALID_ITEM, SLFY_INVALID_ITEM, SLFY_MAXPRICE_GREATER_THAN_MIN_PRICE } =
-    require('../core/constant').error.ITEM
+const {
+    SLFY_ACCESSING_INVALID_ITEM,
+    SLFY_INVALID_ITEM,
+    SLFY_MAXPRICE_GREATER_THAN_MIN_PRICE,
+} = require('../core/constant').error.ITEM
 
 const getShortItem = (item) => ({
     // eslint-disable-next-line no-underscore-dangle
@@ -30,7 +33,7 @@ const getItemById = async (id) => {
 
 const checkValidItemByID = async (id, accessableOwner) => {
     const item = await getItemById(id)
-    
+
     // eslint-disable-next-line no-underscore-dangle
     if (!item.owner._id.equals(accessableOwner.id))
         throw new SLFYError(
@@ -47,23 +50,38 @@ const modifyItemDetails = async (updatable, updatableOwner) => {
         updatable.id,
         updatableOwner
     )
-    const minPrice = updatable.minPrice ? Number(updatable.minPrice) : modifiableEntity.minPrice;
-    const maxPrice = updatable.maxPrice ? Number(updatable.maxPrice) : modifiableEntity.maxPrice;
+    const minPrice = updatable.minPrice
+        ? Number(updatable.minPrice)
+        : modifiableEntity.minPrice
+    const maxPrice = updatable.maxPrice
+        ? Number(updatable.maxPrice)
+        : modifiableEntity.maxPrice
 
     if (updatable.title) modifiableEntity.title = updatable.title
-    if (updatable.shortDescription) modifiableEntity.shortDescription = updatable.shortDescription
-    if (updatable.description) modifiableEntity.description = updatable.description
+    if (updatable.shortDescription)
+        modifiableEntity.shortDescription = updatable.shortDescription
+    if (updatable.description)
+        modifiableEntity.description = updatable.description
     if (updatable.tags) modifiableEntity.tags = updatable.tags
     if (updatable.minPrice) {
-        if( minPrice > maxPrice ) {
-            throw new SLFYError(SLFY_MAXPRICE_GREATER_THAN_MIN_PRICE, 'Max price should be greater than min price of the item.', 403)
+        if (minPrice > maxPrice) {
+            throw new SLFYError(
+                SLFY_MAXPRICE_GREATER_THAN_MIN_PRICE,
+                'Max price should be greater than min price of the item.',
+                403
+            )
         }
-        if(modifiableEntity.sellType !== 'auction') modifiableEntity.minPrice = minPrice
+        if (modifiableEntity.sellType !== 'auction')
+            modifiableEntity.minPrice = minPrice
     }
 
     if (updatable.maxPrice) {
-        if( minPrice > maxPrice ) {
-            throw new SLFYError(SLFY_MAXPRICE_GREATER_THAN_MIN_PRICE, 'Max price should be greater than min price of the item.', 403)
+        if (minPrice > maxPrice) {
+            throw new SLFYError(
+                SLFY_MAXPRICE_GREATER_THAN_MIN_PRICE,
+                'Max price should be greater than min price of the item.',
+                403
+            )
         }
         modifiableEntity.maxPrice = maxPrice
     }
