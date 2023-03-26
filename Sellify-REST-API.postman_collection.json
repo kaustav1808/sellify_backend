@@ -1,502 +1,444 @@
 {
-	"info": {
-		"_postman_id": "2478d5dc-04e6-42c7-a754-f2479a4f9efe",
-		"name": "Sellify-REST-API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "/auth/signup",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);\r",
-									"\r",
-									"if(jsonData.newtoken && jsonData.newtoken.accesstoken) {\r",
-									"    postman.__execution.collectionVariables.set(\"accesstoken\", jsonData.newtoken.accesstoken);\r",
-									"}\r",
-									"\r",
-									"if(jsonData.newtoken && jsonData.newtoken.refreshtoken) {\r",
-									"    postman.__execution.collectionVariables.set(\"refreshtoken\", jsonData.newtoken.refreshtoken);\r",
-									"}"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"abc.xyz@example.com\",\r\n    \"password\": \"secret123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/auth/signup",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"auth",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/auth/signin",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);\r",
-									"\r",
-									"if(jsonData.accesstoken) {\r",
-									"    postman.__execution.collectionVariables.set(\"accesstoken\", jsonData.accesstoken);\r",
-									"}\r",
-									"\r",
-									"if(jsonData.refreshtoken) {\r",
-									"    postman.__execution.collectionVariables.set(\"refreshtoken\", jsonData.refreshtoken);\r",
-									"}\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"abc.xyz@example.com\",\r\n    \"password\": \"secret123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/auth/signin",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"auth",
-								"signin"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/auth/signout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"postman.__execution.collectionVariables.set(\"accesstoken\",\"\");\r",
-									"postman.__execution.collectionVariables.set(\"refreshtoken\",\"\");"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accesstoken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/auth/signout",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"auth",
-								"signout"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"auth": {
-				"type": "noauth"
-			},
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Auction",
-			"item": [
-				{
-					"name": "auction",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accesstoken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/auction",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"auction"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Items",
-			"item": [
-				{
-					"name": "Items - List",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accesstoken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/items",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Items - Create",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accesstoken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"title\": \"Third item\",\r\n        \"shortDescription\": \"this is short description\",\r\n        \"description\": \"this is the description of the item.\",\r\n        \"tags\": [\r\n            \"test a\",\r\n            \"test b\",\r\n            \"test c\",\r\n            \"test d\"\r\n        ],\r\n        \"sellType\": \"auction\",\r\n        \"maxPrice\": 800.25\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/items",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Items - Update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accesstoken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\":\"64172e50a682d4124f35146e\",\r\n    \"title\": \"Third Item Updated v1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/items",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Item - Set to archive",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accesstoken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/items/set-archive/64172e50a682d4124f35146e",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"items",
-								"set-archive",
-								"64172e50a682d4124f35146e"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Items - Delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accesstoken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/items/64172e50a682d4124f35146e",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"items",
-								"64172e50a682d4124f35146e"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Items - Get Item By :id",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/items/6374fda5be66792d03686211",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"items",
-								"6374fda5be66792d03686211"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "user",
-			"item": [
-				{
-					"name": "User - get current user",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accesstoken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}:{{port}}{{prefix}}/users/",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{prefix}}",
-							"path": [
-								"users",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "host",
-			"value": "http://localhost",
-			"type": "default"
-		},
-		{
-			"key": "port",
-			"value": "8080",
-			"type": "default"
-		},
-		{
-			"key": "prefix",
-			"value": "/api",
-			"type": "default"
-		},
-		{
-			"key": "accesstoken",
-			"value": ""
-		},
-		{
-			"key": "refreshtoken",
-			"value": ""
-		}
-	]
+    "info": {
+        "_postman_id": "2478d5dc-04e6-42c7-a754-f2479a4f9efe",
+        "name": "Sellify-REST-API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "/auth/signup",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = JSON.parse(responseBody);\r",
+                                    "\r",
+                                    "if(jsonData.newtoken && jsonData.newtoken.accesstoken) {\r",
+                                    "    postman.__execution.collectionVariables.set(\"accesstoken\", jsonData.newtoken.accesstoken);\r",
+                                    "}\r",
+                                    "\r",
+                                    "if(jsonData.newtoken && jsonData.newtoken.refreshtoken) {\r",
+                                    "    postman.__execution.collectionVariables.set(\"refreshtoken\", jsonData.newtoken.refreshtoken);\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\": \"abc.xyz@example.com\",\r\n    \"password\": \"secret123456\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/auth/signup",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["auth", "signup"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/signin",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = JSON.parse(responseBody);\r",
+                                    "\r",
+                                    "if(jsonData.accesstoken) {\r",
+                                    "    postman.__execution.collectionVariables.set(\"accesstoken\", jsonData.accesstoken);\r",
+                                    "}\r",
+                                    "\r",
+                                    "if(jsonData.refreshtoken) {\r",
+                                    "    postman.__execution.collectionVariables.set(\"refreshtoken\", jsonData.refreshtoken);\r",
+                                    "}\r",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\": \"abc.xyz@example.com\",\r\n    \"password\": \"secret123456\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/auth/signin",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["auth", "signin"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/signout",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "postman.__execution.collectionVariables.set(\"accesstoken\",\"\");\r",
+                                    "postman.__execution.collectionVariables.set(\"refreshtoken\",\"\");"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/auth/signout",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["auth", "signout"]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "auth": {
+                "type": "noauth"
+            },
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Auction",
+            "item": [
+                {
+                    "name": "auction",
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/auction",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["auction"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Items",
+            "item": [
+                {
+                    "name": "Items - List",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/items",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["items"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Items - Create",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"title\": \"Third item\",\r\n        \"shortDescription\": \"this is short description\",\r\n        \"description\": \"this is the description of the item.\",\r\n        \"tags\": [\r\n            \"test a\",\r\n            \"test b\",\r\n            \"test c\",\r\n            \"test d\"\r\n        ],\r\n        \"sellType\": \"auction\",\r\n        \"maxPrice\": 800.25\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/items",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["items"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Items - Update",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":\"64172e50a682d4124f35146e\",\r\n    \"title\": \"Third Item Updated v1\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/items",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["items"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Item - Set to archive",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/items/set-archive/64172e50a682d4124f35146e",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": [
+                                "items",
+                                "set-archive",
+                                "64172e50a682d4124f35146e"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Items - Delete",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/items/64172e50a682d4124f35146e",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["items", "64172e50a682d4124f35146e"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Items - Get Item By :id",
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/items/6374fda5be66792d03686211",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["items", "6374fda5be66792d03686211"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "user",
+            "item": [
+                {
+                    "name": "User - get current user",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accesstoken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{host}}:{{port}}{{prefix}}/users/",
+                            "host": ["{{host}}"],
+                            "port": "{{port}}{{prefix}}",
+                            "path": ["users", ""]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "host",
+            "value": "http://localhost",
+            "type": "default"
+        },
+        {
+            "key": "port",
+            "value": "8080",
+            "type": "default"
+        },
+        {
+            "key": "prefix",
+            "value": "/api",
+            "type": "default"
+        },
+        {
+            "key": "accesstoken",
+            "value": ""
+        },
+        {
+            "key": "refreshtoken",
+            "value": ""
+        }
+    ]
 }
