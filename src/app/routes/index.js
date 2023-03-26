@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.use('/auth', authRouter)
 router.use(
-    '/user',
+    '/users',
     passport.authenticate('verify_token', { session: false }),
     userRouter
 )
