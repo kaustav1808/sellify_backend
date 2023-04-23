@@ -19,6 +19,7 @@ const infoLogger = createLogger({
             name: 'info-file',
             filename: 'log/filelog-info.log',
         }),
+        new transports.Console()
     ],
     format: formatConf,
 })
@@ -30,6 +31,7 @@ const errorLogger = createLogger({
             name: 'error-file',
             filename: 'log/filelog-error.log',
         }),
+        new transports.Console()
     ],
     format: formatConf,
 })

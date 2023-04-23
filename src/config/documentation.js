@@ -11,6 +11,15 @@ module.exports = (port) => ({
                 email: 'kaustavofficial1808@gmail.com',
             },
         },
+        components: {
+           securitySchemas: {
+            bearerAuth: {
+                type: "http",
+                schema: "bearer",
+                bearerFormat: "JWT"
+            }
+           }     
+        },
         servers: [
             {
                 url: process.env.HOSTNAME || `http://localhost:${port}`,
