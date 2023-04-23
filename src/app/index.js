@@ -11,7 +11,8 @@ const { logRequest, SLFYLogger } = require('./core/log')
 const { SLFY_ERROR_404 } = require('./core/constant').error
 
 const app = express()
-const appHost = process.env.HOSTNAME || `http://localhost:${process.env.PORT || 8000}`
+const appHost =
+    process.env.HOSTNAME || `http://localhost:${process.env.PORT || 8000}`
 
 // eslint-disable-next-line no-console
 SLFYLogger.info(`Allowing origin : ${allowedOrigins}`)
@@ -40,12 +41,12 @@ if (process.env.API_DOC_SHOWABLE === 'true') {
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
     // Docs in JSON format
-    app.get("/docs.json", (req, res) => {
-        res.setHeader("Content-Type", "application/json");
-        res.send(specs);
-    });
+    app.get('/docs.json', (req, res) => {
+        res.setHeader('Content-Type', 'application/json')
+        res.send(specs)
+    })
 
-   SLFYLogger.info(`API docs available at ${appHost}/api-docs`)
+    SLFYLogger.info(`API docs available at ${appHost}/api-docs`)
 }
 
 app.use((req, _, next) => {

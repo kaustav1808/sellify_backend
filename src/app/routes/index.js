@@ -76,7 +76,7 @@ router.use(
  *         updated_at:
  *           type: string
  *           format: date
- *           description: The created date of the item 
+ *           description: The created date of the item
  *       example:
  *         id: 64172e50a682d4124f35146e
  *         title: The Tile

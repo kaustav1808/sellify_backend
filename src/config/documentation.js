@@ -12,13 +12,13 @@ module.exports = (port) => ({
             },
         },
         components: {
-           securitySchemas: {
-            bearerAuth: {
-                type: "http",
-                schema: "bearer",
-                bearerFormat: "JWT"
-            }
-           }     
+            securitySchemas: {
+                bearerAuth: {
+                    type: 'http',
+                    schema: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
         },
         servers: [
             {
