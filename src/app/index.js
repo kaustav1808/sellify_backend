@@ -37,7 +37,7 @@ app.use(
 )
 
 if (process.env.API_DOC_SHOWABLE === 'true') {
-    const specs = swaggerJsdoc(apiDocSpecification)
+    const specs = swaggerJsdoc(apiDocSpecification.getSpecDefinition())
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
     // Docs in JSON format

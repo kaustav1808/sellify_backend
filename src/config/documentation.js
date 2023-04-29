@@ -1,7 +1,10 @@
-const { getHost } = require('../app/utils/helpers')
+const { getHost, getHostUrl } = require('../app/utils/helpers')
+const definition = require('./swaggerDoc.json')
 
-module.exports = () => ({
-    swaggerDefinition: {
+const host = getHostUrl()
+
+const getBaseDefinition = () => (
+    {
         swagger: '2.0',
         info: {
             title: 'Sellify API documentation.',
@@ -13,6 +16,8 @@ module.exports = () => ({
                 email: 'kaustavofficial1808@gmail.com',
             },
         },
+        host, 
+        basePath: '/api',
         components: {
             securitySchemas: {
                 bearerAuth: {
@@ -21,12 +26,18 @@ module.exports = () => ({
                     bearerFormat: 'JWT',
                 },
             },
-        },
-        servers: [
+        }
+      })
+
+const getSpecDefinition = () => ({
+  definition,
+  servers: [
             {
                 url: getHost(),
             },
         ],
-    },
-    apis: ['../app/routes/index.js'],
-})
+  apis: ["../app/routes/index.js"],      
+
+})      
+
+module.exports = {getBaseDefinition, getSpecDefinition}
