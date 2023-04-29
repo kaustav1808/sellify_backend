@@ -11,6 +11,8 @@ router.post(
     (req, _, next) => Validate(new AuthValidator(), req, next),
     passport.authenticate('signin', { session: false }),
     (req, res, done) => {
+        /* 	#swagger.tags = ['Authentication']
+        #swagger.description = 'sign in' */
         UserController.signIn(req)
             .then((data) => res.status(200).json(data))
             .catch((err) => done(err, null))
@@ -21,6 +23,8 @@ router.post(
     '/signup',
     (req, _, next) => Validate(new AuthValidator(), req, next),
     (req, res, done) => {
+        /* 	#swagger.tags = ['Authentication']
+        #swagger.description = 'sign up' */
         UserController.signUp(req)
             .then((data) => res.status(201).json(data))
             .catch((err) => done(err, null))
@@ -31,6 +35,8 @@ router.get(
     '/signout',
     passport.authenticate('verify_token', { session: false }),
     (req, res, done) => {
+        /* 	#swagger.tags = ['Authentication']
+        #swagger.description = 'sign out' */
         UserController.signOut(req)
             .then((data) => res.status(200).json(data))
             .catch((err) => done(err, null))
@@ -38,6 +44,8 @@ router.get(
 )
 
 router.post('/new-token', (req, res, done) => {
+    /* 	#swagger.tags = ['Authentication']
+        #swagger.description = 'new token' */
     UserController.getNewToken(req, done)
         .then((data) => res.status(201).json(data))
         .catch((err) => done(err, null))
