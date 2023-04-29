@@ -1,8 +1,9 @@
 require('dotenv').config()
 const app = require('./app')
 const { SLFYLogger } = require('./app/core/log')
+const { getPort } = require('./app/utils/helpers')
 
-const port = process.env.PORT || 8000
+const port = getPort()
 const { db } = require('./config')
 
 db.connect()

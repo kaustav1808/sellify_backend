@@ -1,10 +1,10 @@
 require('dotenv').config()
 const db = require('./db')
 const allowedOrigins = require('./allowedOrigins')
-const apiDoc = require('./documentation')
+const apiDocSpecification = require('./swaggerDoc.json')
 
 module.exports = {
     db,
     allowedOrigins,
-    apiDoc,
+    apiDocSpecification,
 }

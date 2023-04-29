@@ -11,7 +11,8 @@
         "format:write": "prettier --write .",
         "lint:check": "eslint .",
         "lint:fix": "eslint --fix .",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "gennerate:doc": "node documentAutogen.js"
     },
     "author": "Kaustav Bhattacharya",
     "license": "ISC",
@@ -29,6 +30,7 @@
         "passport": "^0.6.0",
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
+        "swagger-autogen": "^2.23.1",
         "swagger-jsdoc": "^6.2.8",
         "swagger-ui-express": "^4.6.0",
         "uuid": "^9.0.0",

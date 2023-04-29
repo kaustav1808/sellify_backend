@@ -1,5 +1,7 @@
-module.exports = (port) => ({
-    definition: {
+const { getHost } = require("../app/utils/helpers");
+
+module.exports = () => ({
+    swaggerDefinition : {
         swagger: '2.0',
         info: {
             title: 'Sellify API documentation.',
@@ -22,7 +24,7 @@ module.exports = (port) => ({
         },
         servers: [
             {
-                url: process.env.HOSTNAME || `http://localhost:${port}`,
+                url: getHost(),
             },
         ],
     },

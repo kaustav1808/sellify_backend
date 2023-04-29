@@ -5,7 +5,7 @@ const cors = require('cors')
 const swaggerJsdoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const router = require('./routes')
-const { allowedOrigins, apiDoc } = require('../config')
+const { allowedOrigins, apiDocSpecification } = require('../config')
 const { SLFYError } = require('./core/error')
 const { logRequest, SLFYLogger } = require('./core/log')
 const { SLFY_ERROR_404 } = require('./core/constant').error
@@ -37,7 +37,7 @@ app.use(
 )
 
 if (process.env.API_DOC_SHOWABLE === 'true') {
-    const specs = swaggerJsdoc(apiDoc(process.env.PORT || 8000))
+    const specs = swaggerJsdoc(apiDocSpecification)
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
     // Docs in JSON format
