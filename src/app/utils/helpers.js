@@ -9,16 +9,16 @@ const getHostUrl = (url) => {
     const resurl = url || getHost()
 
     if (resurl.startsWith('https://')) {
-      const https = 'https://';
-      return resurl.slice(https.length);
+        const https = 'https://'
+        return resurl.slice(https.length)
     }
-  
+
     if (resurl.startsWith('http://')) {
-      const http = 'http://';
-      return resurl.slice(http.length);
+        const http = 'http://'
+        return resurl.slice(http.length)
     }
-  
-    return resurl;
-  } 
+
+    return resurl
+}
 
 module.exports = { isEmpty, getPort, getHost, getHostUrl }
