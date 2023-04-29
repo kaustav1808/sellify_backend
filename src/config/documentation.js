@@ -1,7 +1,7 @@
-const { getHost } = require("../app/utils/helpers");
+const { getHost } = require('../app/utils/helpers')
 
 module.exports = () => ({
-    swaggerDefinition : {
+    swaggerDefinition: {
         swagger: '2.0',
         info: {
             title: 'Sellify API documentation.',
