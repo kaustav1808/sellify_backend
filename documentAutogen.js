@@ -5,6 +5,12 @@ const { SLFYLogger } = require('./src/app/core/log')
 const outPutFile = './src/config/swaggerDoc.json'
 const endPointFiles = ['./src/app/routes/index.js']
 
-SLFYLogger.info(`[The base definition]: ${JSON.stringify(spec.getBaseDefinition(), null, "\t")}`)
+SLFYLogger.info(
+    `[The base definition]: ${JSON.stringify(
+        spec.getBaseDefinition(),
+        null,
+        '\t'
+    )}`
+)
 
 swaggerAutogen(outPutFile, endPointFiles, spec.getBaseDefinition())
