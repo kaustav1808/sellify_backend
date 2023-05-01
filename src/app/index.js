@@ -5,15 +5,17 @@ const cors = require('cors')
 const swaggerJsdoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const router = require('./routes')
-const { allowedOrigins, apiDoc } = require('../config')
+const { allowedOrigins, apiDocSpecification } = require('../config')
 const { SLFYError } = require('./core/error')
 const { logRequest, SLFYLogger } = require('./core/log')
 const { SLFY_ERROR_404 } = require('./core/constant').error
 
 const app = express()
+const appHost =
+    process.env.HOSTNAME || `http://localhost:${process.env.PORT || 8000}`
 
 // eslint-disable-next-line no-console
-console.log(`Allowing origin : ${allowedOrigins}`)
+SLFYLogger.info(`Allowing origin : ${allowedOrigins}`)
 
 app.use(
     cors({
@@ -35,8 +37,16 @@ app.use(
 )
 
 if (process.env.API_DOC_SHOWABLE === 'true') {
-    const specs = swaggerJsdoc(apiDoc(process.env.PORT || 8000))
+    const specs = swaggerJsdoc(apiDocSpecification.getSpecDefinition())
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
+
+    // Docs in JSON format
+    app.get('/docs.json', (req, res) => {
+        res.setHeader('Content-Type', 'application/json')
+        res.send(specs)
+    })
+
+    SLFYLogger.info(`API docs available at ${appHost}/api-docs`)
 }
 
 app.use((req, _, next) => {
@@ -51,6 +61,7 @@ app.use((req, _, next) => {
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {
+    SLFYLogger.error(error)
     if (error instanceof SLFYError) {
         SLFYLogger.error(
             `Error for request ${req.request_ID},`,

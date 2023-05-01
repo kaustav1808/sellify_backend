@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     const { user } = req
     res.status(200).json({
         // eslint-disable-next-line no-underscore-dangle
-        id: user._id,
+        id: user.id,
         username: user.username,
         email: user.email,
     })
