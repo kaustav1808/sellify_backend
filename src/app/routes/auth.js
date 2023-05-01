@@ -148,7 +148,52 @@ router.get(
 
 router.post('/new-token', (req, res, done) => {
     /* 	#swagger.tags = ['Authentication']
-        #swagger.description = 'new token' */
+        #swagger.description = 'Generate a new access token.'
+        #swagger.requestBody = {
+            required: true,
+            "@content": {
+                "application/json": {
+                    schema: {
+                        type: "object",
+                        properties: {
+                            token: {
+                                type: "string",
+                                description: "refresh token"
+                            },
+                        },
+                        required: ["token"]
+                    }
+                }
+            } 
+        }
+        */
+        /*
+        #swagger.responses[201] = {
+                description: 'Success',
+                schema:  {
+                    "accesstoken": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM',
+                    "refreshtoken": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g',
+                    "expiretime": '2023-05-02T07:09:06.427Z'
+                }        
+        }
+        #swagger.responses[409] = {
+                description: 'Failed',
+                schema: {
+                    
+                        "status": 409,
+                        "code": "SLFY_INVALID_TOKEN",
+                        "message": "Invalid token"
+                }     
+        }
+        #swagger.responses[401] = {
+                description: 'Failed',
+                schema: {
+                    $status: 401,
+                    $code: 'SLFY_USER_NOT_EXISTS',
+                    $message: 'User not exists'
+                }        
+        }
+        */
     UserController.getNewToken(req, done)
         .then((data) => res.status(201).json(data))
         .catch((err) => done(err, null))

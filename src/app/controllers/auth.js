@@ -51,7 +51,7 @@ const getNewToken = async (req) => {
     const user = await User.findOne({ _id: token.userId })
 
     if (!user) {
-        throw new SLFYError(SLFY_USER_NOT_EXISTS, 'User not exists', 409)
+        throw new SLFYError(SLFY_USER_NOT_EXISTS, 'User not exists', 401)
     }
 
     // eslint-disable-next-line no-underscore-dangle
