@@ -150,7 +150,7 @@ router.get(
                'bearer': []
         }]
     */
-    /*
+        /*
     #swagger.responses[200] = {
             description: 'Archived item',
             schema: {'$ref': '#/definitions/ShortItem'}        

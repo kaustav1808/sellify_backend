@@ -57,24 +57,19 @@ const getBaseDefinition = () => ({
                 updated_at: '2022-11-16T15:11:33.348Z',
                 __v: 0,
             },
-            ShortItem : {
-                "id": "644f8da37b202639b6a96f90",
-                "title": "Fifth item",
-                "shortDescription": "this is short description of fifth item",
-                "description": "this is the description of the fifth item.",
-                "tags": [
-                  "test a",
-                  "test b",
-                  "test c",
-                  "test d"
-                ],
-                "sellType": "auction",
-                "status": "open",
-                "minPrice": 0,
-                "maxPrice": 800.25,
-                "created_at": "2023-05-01T10:00:03.098Z",
-                "updated_at": "2023-05-01T10:06:07.215Z"
-              }
+            ShortItem: {
+                id: '644f8da37b202639b6a96f90',
+                title: 'Fifth item',
+                shortDescription: 'this is short description of fifth item',
+                description: 'this is the description of the fifth item.',
+                tags: ['test a', 'test b', 'test c', 'test d'],
+                sellType: 'auction',
+                status: 'open',
+                minPrice: 0,
+                maxPrice: 800.25,
+                created_at: '2023-05-01T10:00:03.098Z',
+                updated_at: '2023-05-01T10:06:07.215Z',
+            },
         },
     },
 })
