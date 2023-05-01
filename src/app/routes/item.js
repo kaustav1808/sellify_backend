@@ -78,7 +78,7 @@ router.delete(
                'bearer': []
         }]
     */
-    /*
+        /*
     #swagger.responses[200] = {
             description: 'delete item',
             schema: true        
