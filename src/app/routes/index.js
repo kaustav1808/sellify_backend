@@ -10,7 +10,12 @@ const itemRouter = require('./item')
 
 router.get('/', (req, res) => {
     /* 	#swagger.tags = ['baseurl']
-        #swagger.description = 'Swagger api specification for sellify' */
+        #swagger.description = 'Swagger api specification for sellify'
+    */
+
+    /*
+        #swagger.responses[200] = { description: 'Success', schema: 'Success' }
+    */
     res.status(200).send('success')
 })
 

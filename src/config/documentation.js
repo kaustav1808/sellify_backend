@@ -4,7 +4,6 @@ const definition = require('./swaggerDoc.json')
 const host = getHostUrl()
 
 const getBaseDefinition = () => ({
-    swagger: '2.0',
     info: {
         title: 'Sellify API documentation.',
         version: '0.1.0',
@@ -17,14 +16,16 @@ const getBaseDefinition = () => ({
     },
     host,
     basePath: '/api',
-    components: {
-        securitySchemas: {
-            bearerAuth: {
-                type: 'http',
-                schema: 'bearer',
-                bearerFormat: 'JWT',
-            },
+    securityDefinitions: {
+        bearer: {
+            type: 'apiKey',
+            name: 'Authorization',
+            in: 'header',
+            description: "enter the token",
         },
+    },
+    components: {
+        
     },
 })
 
