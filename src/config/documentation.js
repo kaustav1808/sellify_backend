@@ -15,7 +15,7 @@ const getBaseDefinition = () => ({
         },
     },
     host,
-    schemes: ['http', "https"],
+    schemes: ['http', 'https'],
     basePath: '/api',
     securityDefinitions: {
         bearer: {
