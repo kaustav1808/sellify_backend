@@ -1,1546 +1,1444 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Sellify API documentation.",
-    "version": "0.1.0",
-    "description": "This swagger documentation is design for the API of Sellify backend.",
-    "contact": {
-      "name": "Kaustav Bhattacharya",
-      "email": "kaustavofficial1808@gmail.com"
-    }
-  },
-  "servers": [
-    {
-      "url": "http://localhost:8080/api"
-    }
-  ],
-  "paths": {
-    "/": {
-      "get": {
-        "tags": [
-          "Baseurl"
-        ],
-        "description": "Swagger api specification for sellify",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string",
-                  "example": "Success",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "string",
-                  "example": "Success",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          }
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sellify API documentation.",
+        "version": "0.1.0",
+        "description": "This swagger documentation is design for the API of Sellify backend.",
+        "contact": {
+            "name": "Kaustav Bhattacharya",
+            "email": "kaustavofficial1808@gmail.com"
         }
-      }
     },
-    "/auth/signin": {
-      "post": {
-        "tags": [
-          "Authentication"
-        ],
-        "description": "Log in user.",
-        "parameters": [],
-        "responses": {
-          "0": {
-            "description": ""
-          },
-          "4": {
-            "description": ""
-          },
-          "9": {
-            "description": ""
-          },
-          "200": {
-            "description": "Logged in",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "accesstoken": {
-                      "type": "string",
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNjgyOTI1ODgzfQ.qExVv64dWOpVjo9zfW5lBY7NSLNr1kp9rzDmQG70QdU"
-                    },
-                    "refreshtoken": {
-                      "type": "string",
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY4MjkyNTg4M30.iJOfQn_jr5ziSm4vCORTFgUhTl706aCQ6pTYdWe41O4"
-                    },
-                    "expiretime": {
-                      "type": "string",
-                      "example": "2023-05-02T07:24:43.054Z"
+    "servers": [
+        {
+            "url": "http://localhost:8080/api"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": ["Baseurl"],
+                "description": "Swagger api specification for sellify",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Success",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Success",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
                     }
-                  },
-                  "required": [
-                    "accesstoken",
-                    "refreshtoken",
-                    "expiretime"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
                 }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "accesstoken": {
-                      "type": "string",
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNjgyOTI1ODgzfQ.qExVv64dWOpVjo9zfW5lBY7NSLNr1kp9rzDmQG70QdU"
-                    },
-                    "refreshtoken": {
-                      "type": "string",
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY4MjkyNTg4M30.iJOfQn_jr5ziSm4vCORTFgUhTl706aCQ6pTYdWe41O4"
-                    },
-                    "expiretime": {
-                      "type": "string",
-                      "example": "2023-05-02T07:24:43.054Z"
-                    }
-                  },
-                  "required": [
-                    "accesstoken",
-                    "refreshtoken",
-                    "expiretime"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            },
-            "schema": {
-              "type": "object",
-              "properties": {
-                "accesstoken": {
-                  "type": "string",
-                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNjgyOTI1ODgzfQ.qExVv64dWOpVjo9zfW5lBY7NSLNr1kp9rzDmQG70QdU"
-                },
-                "refreshtoken": {
-                  "type": "string",
-                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY4MjkyNTg4M30.iJOfQn_jr5ziSm4vCORTFgUhTl706aCQ6pTYdWe41O4"
-                },
-                "expiretime": {
-                  "type": "string",
-                  "example": "2023-05-02T07:24:43.054Z"
-                }
-              },
-              "required": [
-                "accesstoken",
-                "refreshtoken",
-                "expiretime"
-              ],
-              "xml": {
-                "name": "main"
-              }
             }
-          },
-          "401": {
-            "description": "Fail to login",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 401
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_USER_NOT_FOUND"
-                    },
-                    "message$": {
-                      "type": "string",
-                      "example": "User not found."
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message$"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 401
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_USER_NOT_FOUND"
-                    },
-                    "message$": {
-                      "type": "string",
-                      "example": "User not found."
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message$"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            },
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "number",
-                  "example": 401
-                },
-                "code": {
-                  "type": "string",
-                  "example": "SLFY_USER_NOT_FOUND"
-                },
-                "message$": {
-                  "type": "string",
-                  "example": "User not found."
-                }
-              },
-              "required": [
-                "status",
-                "code",
-                "message$"
-              ],
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "409": {
-            "description": "Fail to login",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 409
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_PASSWORD_NOT_MATCHED"
-                    },
-                    "message$": {
-                      "type": "string",
-                      "example": "Password not matched"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message$"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 409
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_PASSWORD_NOT_MATCHED"
-                    },
-                    "message$": {
-                      "type": "string",
-                      "example": "Password not matched"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message$"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            },
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "number",
-                  "example": 409
-                },
-                "code": {
-                  "type": "string",
-                  "example": "SLFY_PASSWORD_NOT_MATCHED"
-                },
-                "message$": {
-                  "type": "string",
-                  "example": "Password not matched"
-                }
-              },
-              "required": [
-                "status",
-                "code",
-                "message$"
-              ],
-              "xml": {
-                "name": "main"
-              }
-            }
-          }
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string"
-                  },
-                  "password": {
-                    "type": "string"
-                  }
+        "/auth/signin": {
+            "post": {
+                "tags": ["Authentication"],
+                "description": "Log in user.",
+                "parameters": [],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    },
+                    "4": {
+                        "description": ""
+                    },
+                    "9": {
+                        "description": ""
+                    },
+                    "200": {
+                        "description": "Logged in",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "accesstoken": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNjgyOTI1ODgzfQ.qExVv64dWOpVjo9zfW5lBY7NSLNr1kp9rzDmQG70QdU"
+                                        },
+                                        "refreshtoken": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY4MjkyNTg4M30.iJOfQn_jr5ziSm4vCORTFgUhTl706aCQ6pTYdWe41O4"
+                                        },
+                                        "expiretime": {
+                                            "type": "string",
+                                            "example": "2023-05-02T07:24:43.054Z"
+                                        }
+                                    },
+                                    "required": [
+                                        "accesstoken",
+                                        "refreshtoken",
+                                        "expiretime"
+                                    ],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "accesstoken": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNjgyOTI1ODgzfQ.qExVv64dWOpVjo9zfW5lBY7NSLNr1kp9rzDmQG70QdU"
+                                        },
+                                        "refreshtoken": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY4MjkyNTg4M30.iJOfQn_jr5ziSm4vCORTFgUhTl706aCQ6pTYdWe41O4"
+                                        },
+                                        "expiretime": {
+                                            "type": "string",
+                                            "example": "2023-05-02T07:24:43.054Z"
+                                        }
+                                    },
+                                    "required": [
+                                        "accesstoken",
+                                        "refreshtoken",
+                                        "expiretime"
+                                    ],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        },
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "accesstoken": {
+                                    "type": "string",
+                                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNjgyOTI1ODgzfQ.qExVv64dWOpVjo9zfW5lBY7NSLNr1kp9rzDmQG70QdU"
+                                },
+                                "refreshtoken": {
+                                    "type": "string",
+                                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Q2NGQ1ZGQ1YTU0YjEwNjgzOTVkYzMiLCJlbWFpbCI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6ImFiYy54eXpAZXhhbXBsZS5jb20iLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY4MjkyNTg4M30.iJOfQn_jr5ziSm4vCORTFgUhTl706aCQ6pTYdWe41O4"
+                                },
+                                "expiretime": {
+                                    "type": "string",
+                                    "example": "2023-05-02T07:24:43.054Z"
+                                }
+                            },
+                            "required": [
+                                "accesstoken",
+                                "refreshtoken",
+                                "expiretime"
+                            ],
+                            "xml": {
+                                "name": "main"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Fail to login",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_USER_NOT_FOUND"
+                                        },
+                                        "message$": {
+                                            "type": "string",
+                                            "example": "User not found."
+                                        }
+                                    },
+                                    "required": ["status", "code", "message$"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_USER_NOT_FOUND"
+                                        },
+                                        "message$": {
+                                            "type": "string",
+                                            "example": "User not found."
+                                        }
+                                    },
+                                    "required": ["status", "code", "message$"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        },
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "number",
+                                    "example": 401
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "example": "SLFY_USER_NOT_FOUND"
+                                },
+                                "message$": {
+                                    "type": "string",
+                                    "example": "User not found."
+                                }
+                            },
+                            "required": ["status", "code", "message$"],
+                            "xml": {
+                                "name": "main"
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Fail to login",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 409
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_PASSWORD_NOT_MATCHED"
+                                        },
+                                        "message$": {
+                                            "type": "string",
+                                            "example": "Password not matched"
+                                        }
+                                    },
+                                    "required": ["status", "code", "message$"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 409
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_PASSWORD_NOT_MATCHED"
+                                        },
+                                        "message$": {
+                                            "type": "string",
+                                            "example": "Password not matched"
+                                        }
+                                    },
+                                    "required": ["status", "code", "message$"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        },
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "number",
+                                    "example": 409
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "example": "SLFY_PASSWORD_NOT_MATCHED"
+                                },
+                                "message$": {
+                                    "type": "string",
+                                    "example": "Password not matched"
+                                }
+                            },
+                            "required": ["status", "code", "message$"],
+                            "xml": {
+                                "name": "main"
+                            }
+                        }
+                    }
                 },
-                "required": [
-                  "email",
-                  "password"
-                ]
-              }
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["email", "password"]
+                            }
+                        }
+                    }
+                }
             }
-          }
+        },
+        "/auth/signup": {
+            "post": {
+                "tags": ["Authentication"],
+                "description": "Register a new user in sellify user pool.",
+                "parameters": [],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    },
+                    "4": {
+                        "description": ""
+                    },
+                    "9": {
+                        "description": ""
+                    },
+                    "200": {
+                        "description": "OK"
+                    },
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "644f659227d9ac646446b2ac"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "abc.xwyz@example.com"
+                                                },
+                                                "username": {
+                                                    "type": "string",
+                                                    "example": "abc.xwyz@example.com"
+                                                }
+                                            }
+                                        },
+                                        "newtoken": {
+                                            "type": "object",
+                                            "properties": {
+                                                "accesstoken": {
+                                                    "type": "string",
+                                                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM"
+                                                },
+                                                "refreshtoken": {
+                                                    "type": "string",
+                                                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g"
+                                                },
+                                                "expiretime": {
+                                                    "type": "string",
+                                                    "example": "2023-05-02T07:09:06.427Z"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "644f659227d9ac646446b2ac"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "abc.xwyz@example.com"
+                                                },
+                                                "username": {
+                                                    "type": "string",
+                                                    "example": "abc.xwyz@example.com"
+                                                }
+                                            }
+                                        },
+                                        "newtoken": {
+                                            "type": "object",
+                                            "properties": {
+                                                "accesstoken": {
+                                                    "type": "string",
+                                                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM"
+                                                },
+                                                "refreshtoken": {
+                                                    "type": "string",
+                                                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g"
+                                                },
+                                                "expiretime": {
+                                                    "type": "string",
+                                                    "example": "2023-05-02T07:09:06.427Z"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 409
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_USER_EXISTS"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User already exists"
+                                        }
+                                    },
+                                    "required": ["status", "code", "message"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 409
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_USER_EXISTS"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User already exists"
+                                        }
+                                    },
+                                    "required": ["status", "code", "message"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["email", "password"]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/signout": {
+            "get": {
+                "tags": ["Authentication"],
+                "description": "Sign out current user.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Successfully logout!",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Successfully logout!",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Unauthorized",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Unauthorized",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/auth/new-token": {
+            "post": {
+                "tags": ["Authentication"],
+                "description": "Generate a new access token.",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "accesstoken": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM"
+                                        },
+                                        "refreshtoken": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g"
+                                        },
+                                        "expiretime": {
+                                            "type": "string",
+                                            "example": "2023-05-02T07:09:06.427Z"
+                                        }
+                                    },
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "accesstoken": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM"
+                                        },
+                                        "refreshtoken": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g"
+                                        },
+                                        "expiretime": {
+                                            "type": "string",
+                                            "example": "2023-05-02T07:09:06.427Z"
+                                        }
+                                    },
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_USER_NOT_EXISTS"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User not exists"
+                                        }
+                                    },
+                                    "required": ["status", "code", "message"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_USER_NOT_EXISTS"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User not exists"
+                                        }
+                                    },
+                                    "required": ["status", "code", "message"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 409
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_INVALID_TOKEN"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid token"
+                                        }
+                                    },
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 409
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_INVALID_TOKEN"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid token"
+                                        }
+                                    },
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "token": {
+                                        "type": "string",
+                                        "description": "refresh token"
+                                    }
+                                },
+                                "required": ["token"]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/": {
+            "get": {
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/auction/": {
+            "get": {
+                "tags": ["Auction"],
+                "description": "Get all acution",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/items/": {
+            "get": {
+                "tags": ["Items"],
+                "description": "get list of tiems.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Item lists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemList"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemList"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Items"],
+                "description": "Create a new item.",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortItem"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortItem"
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 402
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_VALIDATION_ERROR"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "properties": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "status",
+                                        "code",
+                                        "message",
+                                        "errors"
+                                    ],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 402
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_VALIDATION_ERROR"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "properties": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "status",
+                                        "code",
+                                        "message",
+                                        "errors"
+                                    ],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "shortDescription": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "sellType": {
+                                        "type": "string",
+                                        "items": ["range", "auction"]
+                                    },
+                                    "minPrice": {
+                                        "type": "number"
+                                    },
+                                    "maxPrice": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "title",
+                                    "shortDescription",
+                                    "description",
+                                    "sellType",
+                                    "maxPrice"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Items"],
+                "description": "Update an new item.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortItem"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortItem"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 403
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_ACCESSING_INVALID_ITEM"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Updating an unauthorized item."
+                                        }
+                                    },
+                                    "required": ["status", "code", "message"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 403
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_ACCESSING_INVALID_ITEM"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Updating an unauthorized item."
+                                        }
+                                    },
+                                    "required": ["status", "code", "message"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "shortDescription": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "minPrice": {
+                                        "type": "number"
+                                    },
+                                    "maxPrice": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "title",
+                                    "shortDescription",
+                                    "description",
+                                    "sellType",
+                                    "maxPrice"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/items/{id}": {
+            "get": {
+                "tags": ["Items"],
+                "description": "get item.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item lists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Items"],
+                "description": "delete item.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "delete item",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean",
+                                    "example": true,
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "boolean",
+                                    "example": true,
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Unauthorized",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Unauthorized",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/items/set-archive/{id}": {
+            "get": {
+                "tags": ["Items"],
+                "description": "set item to archive.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Archived item",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortItem"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortItem"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Unauthorized",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Unauthorized",
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Updating an unauthorized item.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 403
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_ACCESSING_INVALID_ITEM"
+                                        },
+                                        "message$": {
+                                            "type": "string",
+                                            "example": "Updating an unauthorized item."
+                                        }
+                                    },
+                                    "required": ["status", "code", "message$"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 403
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_ACCESSING_INVALID_ITEM"
+                                        },
+                                        "message$": {
+                                            "type": "string",
+                                            "example": "Updating an unauthorized item."
+                                        }
+                                    },
+                                    "required": ["status", "code", "message$"],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
         }
-      }
     },
-    "/auth/signup": {
-      "post": {
-        "tags": [
-          "Authentication"
-        ],
-        "description": "Register a new user in sellify user pool.",
-        "parameters": [],
-        "responses": {
-          "0": {
-            "description": ""
-          },
-          "4": {
-            "description": ""
-          },
-          "9": {
-            "description": ""
-          },
-          "200": {
-            "description": "OK"
-          },
-          "201": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "user": {
-                      "type": "object",
-                      "properties": {
+    "components": {
+        "schemas": {
+            "ItemList": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
                         "id": {
-                          "type": "string",
-                          "example": "644f659227d9ac646446b2ac"
+                            "type": "string",
+                            "example": "6374fda5be66792d03686211"
                         },
-                        "email": {
-                          "type": "string",
-                          "example": "abc.xwyz@example.com"
+                        "title": {
+                            "type": "string",
+                            "example": "abcd"
                         },
-                        "username": {
-                          "type": "string",
-                          "example": "abc.xwyz@example.com"
+                        "shortDescription": {
+                            "type": "string",
+                            "example": "skfpsfpo"
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "abcd"
+                        },
+                        "tags": {
+                            "type": "array",
+                            "example": ["a", "v"],
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "sellType": {
+                            "type": "string",
+                            "example": "range"
+                        },
+                        "status": {
+                            "type": "string",
+                            "example": "open"
+                        },
+                        "minPrice": {
+                            "type": "number",
+                            "example": 500
+                        },
+                        "maxPrice": {
+                            "type": "number",
+                            "example": 700
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2022-11-16T15:11:33.348Z"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2022-11-16T15:11:33.348Z"
                         }
-                      }
-                    },
-                    "newtoken": {
-                      "type": "object",
-                      "properties": {
-                        "accesstoken": {
-                          "type": "string",
-                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM"
-                        },
-                        "refreshtoken": {
-                          "type": "string",
-                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g"
-                        },
-                        "expiretime": {
-                          "type": "string",
-                          "example": "2023-05-02T07:09:06.427Z"
-                        }
-                      }
                     }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                },
+                "xml": {
+                    "name": "ItemList"
                 }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "user": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "example": "644f659227d9ac646446b2ac"
-                        },
-                        "email": {
-                          "type": "string",
-                          "example": "abc.xwyz@example.com"
-                        },
-                        "username": {
-                          "type": "string",
-                          "example": "abc.xwyz@example.com"
-                        }
-                      }
-                    },
-                    "newtoken": {
-                      "type": "object",
-                      "properties": {
-                        "accesstoken": {
-                          "type": "string",
-                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM"
-                        },
-                        "refreshtoken": {
-                          "type": "string",
-                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g"
-                        },
-                        "expiretime": {
-                          "type": "string",
-                          "example": "2023-05-02T07:09:06.427Z"
-                        }
-                      }
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 409
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_USER_EXISTS"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "User already exists"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 409
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_USER_EXISTS"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "User already exists"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
+            },
+            "Item": {
                 "type": "object",
                 "properties": {
-                  "email": {
-                    "type": "string"
-                  },
-                  "password": {
-                    "type": "string"
-                  }
+                    "is_archive": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "_id": {
+                        "type": "string",
+                        "example": "6374fda5be66792d03686211"
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "abcd"
+                    },
+                    "shortDescription": {
+                        "type": "string",
+                        "example": "skfpsfpo"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "abcd"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "example": ["a", "v"],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sellType": {
+                        "type": "string",
+                        "example": "range"
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "open"
+                    },
+                    "minPrice": {
+                        "type": "number",
+                        "example": 500
+                    },
+                    "maxPrice": {
+                        "type": "number",
+                        "example": 700
+                    },
+                    "deleted_at": {},
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-11-16T15:11:33.348Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-11-16T15:11:33.348Z"
+                    },
+                    "__v": {
+                        "type": "number",
+                        "example": 0
+                    }
                 },
-                "required": [
-                  "email",
-                  "password"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/auth/signout": {
-      "get": {
-        "tags": [
-          "Authentication"
-        ],
-        "description": "Sign out current user.",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string",
-                  "example": "Successfully logout!",
-                  "xml": {
-                    "name": "main"
-                  }
+                "xml": {
+                    "name": "Item"
                 }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "string",
-                  "example": "Successfully logout!",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string",
-                  "example": "Unauthorized",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "string",
-                  "example": "Unauthorized",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/auth/new-token": {
-      "post": {
-        "tags": [
-          "Authentication"
-        ],
-        "description": "Generate a new access token.",
-        "parameters": [],
-        "responses": {
-          "201": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "accesstoken": {
-                      "type": "string",
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM"
-                    },
-                    "refreshtoken": {
-                      "type": "string",
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g"
-                    },
-                    "expiretime": {
-                      "type": "string",
-                      "example": "2023-05-02T07:09:06.427Z"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "accesstoken": {
-                      "type": "string",
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE2ODI5MjQ5NDZ9.Sm_8FNEWCXHaLV2MJUhstXo_IeAm9YU1oAkYfwgs0CM"
-                    },
-                    "refreshtoken": {
-                      "type": "string",
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDRmNjU5MjI3ZDlhYzY0NjQ0NmIyYWMiLCJlbWFpbCI6ImFiYy54d3l6QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJhYmMueHd5ekBleGFtcGxlLmNvbSIsInR5cGUiOiJyZWZyZXNoIiwiaWF0IjoxNjgyOTI0OTQ2fQ.6FAjzzSd5t4aEUxeaw-dlD1ZQ2Z_UT86XKi0v1lBw_g"
-                    },
-                    "expiretime": {
-                      "type": "string",
-                      "example": "2023-05-02T07:09:06.427Z"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 401
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_USER_NOT_EXISTS"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "User not exists"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 401
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_USER_NOT_EXISTS"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "User not exists"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 409
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_INVALID_TOKEN"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Invalid token"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 409
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_INVALID_TOKEN"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Invalid token"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
+            },
+            "ShortItem": {
                 "type": "object",
                 "properties": {
-                  "token": {
-                    "type": "string",
-                    "description": "refresh token"
-                  }
+                    "id": {
+                        "type": "string",
+                        "example": "644f8da37b202639b6a96f90"
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Fifth item"
+                    },
+                    "shortDescription": {
+                        "type": "string",
+                        "example": "this is short description of fifth item"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "this is the description of the fifth item."
+                    },
+                    "tags": {
+                        "type": "array",
+                        "example": ["test a", "test b", "test c", "test d"],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sellType": {
+                        "type": "string",
+                        "example": "auction"
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "open"
+                    },
+                    "minPrice": {
+                        "type": "number",
+                        "example": 0
+                    },
+                    "maxPrice": {
+                        "type": "number",
+                        "example": 800.25
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2023-05-01T10:00:03.098Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2023-05-01T10:06:07.215Z"
+                    }
                 },
-                "required": [
-                  "token"
-                ]
-              }
+                "xml": {
+                    "name": "ShortItem"
+                }
             }
-          }
-        }
-      }
-    },
-    "/users/": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/auction/": {
-      "get": {
-        "tags": [
-          "Auction"
-        ],
-        "description": "Get all acution",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/items/": {
-      "get": {
-        "tags": [
-          "Items"
-        ],
-        "description": "get list of tiems.",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Item lists",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ItemList"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ItemList"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Items"
-        ],
-        "description": "Create a new item.",
-        "parameters": [],
-        "responses": {
-          "201": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShortItem"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShortItem"
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 402
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_VALIDATION_ERROR"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Validation Error."
-                    },
-                    "errors": {
-                      "type": "object",
-                      "properties": {}
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message",
-                    "errors"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 402
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_VALIDATION_ERROR"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Validation Error."
-                    },
-                    "errors": {
-                      "type": "object",
-                      "properties": {}
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message",
-                    "errors"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          }
         },
-        "security": [
-          {
-            "bearer": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string"
-                  },
-                  "shortDescription": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "tags": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "sellType": {
-                    "type": "string",
-                    "items": [
-                      "range",
-                      "auction"
-                    ]
-                  },
-                  "minPrice": {
-                    "type": "number"
-                  },
-                  "maxPrice": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "title",
-                  "shortDescription",
-                  "description",
-                  "sellType",
-                  "maxPrice"
-                ]
-              }
+        "securitySchemes": {
+            "bearer": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header",
+                "description": "enter the token"
             }
-          }
         }
-      },
-      "put": {
-        "tags": [
-          "Items"
-        ],
-        "description": "Update an new item.",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShortItem"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShortItem"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 403
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_ACCESSING_INVALID_ITEM"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Updating an unauthorized item."
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 403
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_ACCESSING_INVALID_ITEM"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Updating an unauthorized item."
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "bearer": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "title": {
-                    "type": "string"
-                  },
-                  "shortDescription": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "tags": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "minPrice": {
-                    "type": "number"
-                  },
-                  "maxPrice": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "title",
-                  "shortDescription",
-                  "description",
-                  "sellType",
-                  "maxPrice"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/items/{id}": {
-      "get": {
-        "tags": [
-          "Items"
-        ],
-        "description": "get item.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Item lists",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Item"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/Item"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Items"
-        ],
-        "description": "delete item.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "delete item",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "boolean",
-                  "example": true,
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "boolean",
-                  "example": true,
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string",
-                  "example": "Unauthorized",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "string",
-                  "example": "Unauthorized",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/items/set-archive/{id}": {
-      "get": {
-        "tags": [
-          "Items"
-        ],
-        "description": "set item to archive.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Archived item",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShortItem"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShortItem"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string",
-                  "example": "Unauthorized",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "string",
-                  "example": "Unauthorized",
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Updating an unauthorized item.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 403
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_ACCESSING_INVALID_ITEM"
-                    },
-                    "message$": {
-                      "type": "string",
-                      "example": "Updating an unauthorized item."
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message$"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 403
-                    },
-                    "code": {
-                      "type": "string",
-                      "example": "SLFY_ACCESSING_INVALID_ITEM"
-                    },
-                    "message$": {
-                      "type": "string",
-                      "example": "Updating an unauthorized item."
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "code",
-                    "message$"
-                  ],
-                  "xml": {
-                    "name": "main"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
     }
-  },
-  "components": {
-    "schemas": {
-      "ItemList": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "example": "6374fda5be66792d03686211"
-            },
-            "title": {
-              "type": "string",
-              "example": "abcd"
-            },
-            "shortDescription": {
-              "type": "string",
-              "example": "skfpsfpo"
-            },
-            "description": {
-              "type": "string",
-              "example": "abcd"
-            },
-            "tags": {
-              "type": "array",
-              "example": [
-                "a",
-                "v"
-              ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "sellType": {
-              "type": "string",
-              "example": "range"
-            },
-            "status": {
-              "type": "string",
-              "example": "open"
-            },
-            "minPrice": {
-              "type": "number",
-              "example": 500
-            },
-            "maxPrice": {
-              "type": "number",
-              "example": 700
-            },
-            "created_at": {
-              "type": "string",
-              "example": "2022-11-16T15:11:33.348Z"
-            },
-            "updated_at": {
-              "type": "string",
-              "example": "2022-11-16T15:11:33.348Z"
-            }
-          }
-        },
-        "xml": {
-          "name": "ItemList"
-        }
-      },
-      "Item": {
-        "type": "object",
-        "properties": {
-          "is_archive": {
-            "type": "boolean",
-            "example": false
-          },
-          "_id": {
-            "type": "string",
-            "example": "6374fda5be66792d03686211"
-          },
-          "title": {
-            "type": "string",
-            "example": "abcd"
-          },
-          "shortDescription": {
-            "type": "string",
-            "example": "skfpsfpo"
-          },
-          "description": {
-            "type": "string",
-            "example": "abcd"
-          },
-          "tags": {
-            "type": "array",
-            "example": [
-              "a",
-              "v"
-            ],
-            "items": {
-              "type": "string"
-            }
-          },
-          "sellType": {
-            "type": "string",
-            "example": "range"
-          },
-          "status": {
-            "type": "string",
-            "example": "open"
-          },
-          "minPrice": {
-            "type": "number",
-            "example": 500
-          },
-          "maxPrice": {
-            "type": "number",
-            "example": 700
-          },
-          "deleted_at": {},
-          "created_at": {
-            "type": "string",
-            "example": "2022-11-16T15:11:33.348Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "example": "2022-11-16T15:11:33.348Z"
-          },
-          "__v": {
-            "type": "number",
-            "example": 0
-          }
-        },
-        "xml": {
-          "name": "Item"
-        }
-      },
-      "ShortItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "644f8da37b202639b6a96f90"
-          },
-          "title": {
-            "type": "string",
-            "example": "Fifth item"
-          },
-          "shortDescription": {
-            "type": "string",
-            "example": "this is short description of fifth item"
-          },
-          "description": {
-            "type": "string",
-            "example": "this is the description of the fifth item."
-          },
-          "tags": {
-            "type": "array",
-            "example": [
-              "test a",
-              "test b",
-              "test c",
-              "test d"
-            ],
-            "items": {
-              "type": "string"
-            }
-          },
-          "sellType": {
-            "type": "string",
-            "example": "auction"
-          },
-          "status": {
-            "type": "string",
-            "example": "open"
-          },
-          "minPrice": {
-            "type": "number",
-            "example": 0
-          },
-          "maxPrice": {
-            "type": "number",
-            "example": 800.25
-          },
-          "created_at": {
-            "type": "string",
-            "example": "2023-05-01T10:00:03.098Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "example": "2023-05-01T10:06:07.215Z"
-          }
-        },
-        "xml": {
-          "name": "ShortItem"
-        }
-      }
-    },
-    "securitySchemes": {
-      "bearer": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header",
-        "description": "enter the token"
-      }
-    }
-  }
 }
