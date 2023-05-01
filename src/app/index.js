@@ -61,6 +61,7 @@ app.use((req, _, next) => {
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {
+    SLFYLogger.error(error)
     if (error instanceof SLFYError) {
         SLFYLogger.error(
             `Error for request ${req.request_ID},`,
