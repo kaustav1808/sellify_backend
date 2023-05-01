@@ -167,7 +167,7 @@ router.post('/new-token', (req, res, done) => {
             } 
         }
         */
-        /*
+    /*
         #swagger.responses[201] = {
                 description: 'Success',
                 schema:  {
