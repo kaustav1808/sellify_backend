@@ -9,7 +9,7 @@ const auctionRouter = require('./auction')
 const itemRouter = require('./item')
 
 router.get('/', (req, res) => {
-    /* 	#swagger.tags = ['baseurl']
+    /* 	#swagger.tags = ['Baseurl']
         #swagger.description = 'Swagger api specification for sellify'
     */
 

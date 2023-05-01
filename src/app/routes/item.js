@@ -42,8 +42,49 @@ router.post(
     passport.authenticate('verify_token', { session: false }),
     (req, _, next) => Validate(new ItemCreateValidator(), req, next),
     (req, res, done) => {
+        /* 	#swagger.tags = ['Items']
+            #swagger.description = 'Create a new item.'
+            #swagger.security = [{
+               'bearer': []
+            }]
+            #swagger.requestBody = {
+                required: true,
+                "@content": {
+                    "application/json": {
+                        schema: {
+                            type: "object",
+                            properties: {
+                                title: { type: "string" },
+                                shortDescription: { type: "string" },
+                                description: { type: "string" },
+                                tags: { type: "array", items: {type: "string"} },
+                                sellType: { type: "string", items: ['range', 'auction'] },
+                                minPrice: { type: "number" },
+                                maxPrice: { type: "number" },
+                            },    
+                            required: ["title", "shortDescription", "description", "sellType", "maxPrice"]
+                        }
+                    }
+                } 
+            }
+        */
+        /*
+            #swagger.responses[201] = {
+                    description: 'Success',
+                    schema: {'$ref': '#/definitions/ShortItem'}        
+            }
+            #swagger.responses[402] = {
+                    description: 'Failed',
+                    schema: {
+                        $status: 402,
+                        $code: 'SLFY_VALIDATION_ERROR',
+                        $message: 'Validation Error.',
+                        $errors: {},
+                    }        
+            }
+        */
         ItemController.createItem(req)
-            .then((result) => res.status(200).json(result))
+            .then((result) => res.status(201).json(result))
             .catch((err) => done(err, null))
     }
 )
@@ -52,6 +93,47 @@ router.put(
     '/',
     passport.authenticate('verify_token', { session: false }),
     (req, res, done) => {
+        /* 	#swagger.tags = ['Items']
+            #swagger.description = 'Update an new item.'
+            #swagger.security = [{
+               'bearer': []
+            }]
+            #swagger.requestBody = {
+                required: true,
+                "@content": {
+                    "application/json": {
+                        schema: {
+                            type: "object",
+                            properties: {
+                                id: { type: "string" },
+                                title: { type: "string" },
+                                shortDescription: { type: "string" },
+                                description: { type: "string" },
+                                tags: { type: "array", items: {type: "string"} },
+                                minPrice: { type: "number" },
+                                maxPrice: { type: "number" },
+                            },    
+                            required: ["title", "shortDescription", "description", "sellType", "maxPrice"]
+                        }
+                    }
+                } 
+            }
+        */
+        /*
+            #swagger.responses[200] = {
+                    description: 'Success',
+                    schema: {'$ref': '#/definitions/ShortItem'}        
+            }
+            #swagger.responses[403] = {
+                    description: 'Failed',
+                    schema: 
+                        {
+                            $status: 403,
+                            $code: 'SLFY_ACCESSING_INVALID_ITEM',
+                            $message: 'Updating an unauthorized item.',
+                        }, 
+            }
+        */
         ItemController.updateItem(req)
             .then((result) => res.status(200).json(result))
             .catch((err) => done(err, null))
@@ -62,6 +144,30 @@ router.get(
     '/set-archive/:id',
     passport.authenticate('verify_token', { session: false }),
     (req, res, done) => {
+        /* 	#swagger.tags = ['Items']
+        #swagger.description = 'set item to archive.'
+        #swagger.security = [{
+               'bearer': []
+        }]
+    */
+    /*
+    #swagger.responses[200] = {
+            description: 'Archived item',
+            schema: {'$ref': '#/definitions/ShortItem'}        
+    }
+    #swagger.responses[403] = {
+            description: 'Updating an unauthorized item.',
+            schema: {
+                    $status: 403,
+                    $code: 'SLFY_ACCESSING_INVALID_ITEM',
+                    $message$: 'Updating an unauthorized item.'
+                }        
+    }
+    #swagger.responses[401] = {
+            description: 'Unauthorized.',
+            schema: 'Unauthorized'        
+    }
+    */
         ItemController.setItemToArchive(req)
             .then((result) => res.status(200).json(result))
             .catch((err) => done(err, null))
