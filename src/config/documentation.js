@@ -21,12 +21,10 @@ const getBaseDefinition = () => ({
             type: 'apiKey',
             name: 'Authorization',
             in: 'header',
-            description: "enter the token",
+            description: 'enter the token',
         },
     },
-    components: {
-        
-    },
+    components: {},
 })
 
 const getSpecDefinition = () => ({

@@ -1,4 +1,4 @@
-const swaggerAutogen = require('swagger-autogen')({openapi: '3.0.0'})
+const swaggerAutogen = require('swagger-autogen')({ openapi: '3.0.0' })
 const spec = require('./src/config/documentation')
 const { SLFYLogger } = require('./src/app/core/log')
 
