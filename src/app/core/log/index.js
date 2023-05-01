@@ -19,6 +19,7 @@ const infoLogger = createLogger({
             name: 'info-file',
             filename: 'log/filelog-info.log',
         }),
+        new transports.Console(),
     ],
     format: formatConf,
 })
@@ -30,6 +31,7 @@ const errorLogger = createLogger({
             name: 'error-file',
             filename: 'log/filelog-error.log',
         }),
+        new transports.Console(),
     ],
     format: formatConf,
 })
@@ -42,7 +44,9 @@ const SLFYLogger = {
 const logRequest = (req) => {
     const reqId = uuidv4()
     req.request_ID = reqId
-    SLFYLogger.info(`New ${req.protocol} request ID ${reqId}, path ${req.path}`)
+    SLFYLogger.info(
+        `New ${req.protocol} request ID ${reqId}, path ${req.method}:: ${req.path}`
+    )
     if (req.params)
         SLFYLogger.info(
             `Request ID ${reqId}, params ${JSON.stringify(req.params)}`

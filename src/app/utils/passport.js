@@ -14,6 +14,7 @@ const {
     getAuthorizationToken,
     destroyCurrentToken,
 } = require('../services/auth')
+const { getShortUser } = require('../services/user')
 
 const opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
@@ -90,7 +91,7 @@ passport.use(
             done(err, null)
         }
 
-        return done(null, user)
+        return done(null, getShortUser(user))
     })
 )
 
