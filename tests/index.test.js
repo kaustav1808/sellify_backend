@@ -34,7 +34,3 @@ afterAll(async () => {
     await dbConnection.connection.db.dropDatabase()
     await dbConnection.connection.close()
 })
-
-
-
-
