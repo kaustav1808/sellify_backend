@@ -11,21 +11,12 @@ beforeAll(async () => {
     dbConnection = await db.connect()
 })
 
-describe('get /api/ response', () => {
-    test('It should send success message with 200 status.', async () => {
-        const response = await client.get('/api/')
+describe('Test for /api/items', () => {
+    test('It should successfully fetch list of items', async () => {
+        const response = await client.get('/api/items').send()
 
         expect(response.statusCode).toBe(200)
-        expect(response.text).toBe('success')
-    })
-})
-
-describe('get / response', () => {
-    test('It should send welcome message with 200 status.', async () => {
-        const response = await client.get('/')
-
-        expect(response.statusCode).toBe(200)
-        expect(response.text).toBe('Welcome to sellify.')
+        expect(response.body).toBe(Array)
     })
 })
 
@@ -34,7 +25,3 @@ afterAll(async () => {
     await dbConnection.connection.db.dropDatabase()
     await dbConnection.connection.close()
 })
-
-
-
-

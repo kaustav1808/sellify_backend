@@ -1,16 +1,19 @@
 const request = require('supertest')
 const server = require('../src/app')
+
+const client = request(server)
 const { db } = require('../src/config')
 
 let dbConnection = null
 
+// eslint-disable-next-line no-undef
 beforeAll(async () => {
     dbConnection = await db.connect()
 })
 
-describe('post /api/auth response', () => {
+describe('Test for /api/auth', () => {
     test('It should successfully register a user', async () => {
-        const response = await request(server).post('/api/auth/signup').send({
+        const response = await client.post('/api/auth/signup').send({
             email: 'kaustavtatai18h@gmail.com',
             password: '123456',
         })
@@ -19,7 +22,7 @@ describe('post /api/auth response', () => {
     })
 
     test('It should send user exists', async () => {
-        const response = await request(server).post('/api/auth/signup').send({
+        const response = await client.post('/api/auth/signup').send({
             email: 'kaustavtatai18h@gmail.com',
             password: '123456',
         })
@@ -30,6 +33,7 @@ describe('post /api/auth response', () => {
     })
 })
 
+// eslint-disable-next-line no-undef
 afterAll(async () => {
     await dbConnection.connection.db.dropDatabase()
     await dbConnection.connection.close()
