@@ -13,6 +13,7 @@ const getShortItem = (item) => ({
     shortDescription: item.shortDescription,
     description: item.description,
     tags: item.tags,
+    isArchive: item.is_archive,
     sellType: item.sellType,
     status: item.status,
     minPrice: item.minPrice,

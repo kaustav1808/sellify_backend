@@ -18,8 +18,9 @@ class ItemCreateValidator extends Validator {
             minPrice: Joi.alternatives().conditional('sellType', {
                 is: 'range',
                 then: Joi.number().min(0).required(),
+                otherwise: Joi.forbidden(),
             }),
-            maxPrice: Joi.number().min(0).required(),
+            maxPrice: Joi.number().min(100).required(),
         }
     }
 }
