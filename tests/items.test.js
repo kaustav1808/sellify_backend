@@ -14,11 +14,11 @@ beforeAll(async () => {
 describe('Test for /api/items', () => {
     test('It should successfully fetch list of items', async () => {
         const response = await client.get('/api/items').send()
- 
+
         // currently by passing this test
         // expect(response.statusCode).toBe(200)
         // expect(response.body).toBe(Array)
-        expect(true).toBe(true);
+        expect(true).toBe(true)
     })
 })
 
