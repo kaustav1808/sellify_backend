@@ -5,3 +5,5 @@ jest.config.js
 node_modules
 .gitignore
 .github/
+.jest-stare/
+Sellify-REST-API.postman_collection.json

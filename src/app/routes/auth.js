@@ -41,10 +41,10 @@ router.post(
                     $expiretime: '2023-05-02T07:24:43.054Z'
                 }        
         }
-        #swagger.responses[409] = {
+        #swagger.responses[401] = {
                 description: 'Fail to login',
                 schema: {
-                    $status: 409,
+                    $status: 401,
                     $code: 'SLFY_PASSWORD_NOT_MATCHED',
                     $message$: 'Password not matched'
                 }        
