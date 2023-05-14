@@ -6,7 +6,7 @@ const { db } = require('../src/config')
 
 let dbConnection = null
 let accessToken = null
-let refreshToken = null 
+let refreshToken = null
 
 // eslint-disable-next-line no-undef
 beforeAll(async () => {
@@ -73,7 +73,7 @@ describe('Consolidate test for the authentication module', () => {
 
     test('It should successfully send a new access token', async () => {
         const response = await client.post('/api/auth/new-token').send({
-           token: refreshToken
+            token: refreshToken,
         })
 
         expect(response.statusCode).toBe(201)
@@ -86,13 +86,13 @@ describe('Consolidate test for the authentication module', () => {
     })
 
     test('It should successfully logout the user', async () => {
-        const response = await client.get('/api/auth/signout').set(
-           'Authorization', `Bearer ${accessToken}`
-        )
+        const response = await client
+            .get('/api/auth/signout')
+            .set('Authorization', `Bearer ${accessToken}`)
 
         expect(response.statusCode).toBe(200)
-        expect(response.body).toBe("Successfully logout!")
-        
+        expect(response.body).toBe('Successfully logout!')
+
         accessToken = null
         refreshToken = null
     })
