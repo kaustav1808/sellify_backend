@@ -11,7 +11,7 @@ beforeAll(async () => {
     dbConnection = await db.connect()
 })
 
-describe('get /api/ response', () => {
+describe('GET:: /api response', () => {
     test('It should send success message with 200 status.', async () => {
         const response = await client.get('/api/')
 
@@ -20,7 +20,7 @@ describe('get /api/ response', () => {
     })
 })
 
-describe('get / response', () => {
+describe('GET:: / response', () => {
     test('It should send welcome message with 200 status.', async () => {
         const response = await client.get('/')
 
