@@ -1,5 +1,5 @@
 const { SLFYError } = require('../core/error')
-const Item = require('../models/Item')
+const Item = require('../database/models/Item')
 const {
     SLFY_ACCESSING_INVALID_ITEM,
     SLFY_INVALID_ITEM,

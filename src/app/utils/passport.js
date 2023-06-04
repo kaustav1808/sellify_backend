@@ -2,7 +2,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const JwtStrategy = require('passport-jwt').Strategy
 const { ExtractJwt } = require('passport-jwt')
-const User = require('../models/User')
+const User = require('../database/models/User')
 const {
     SLFY_USER_NOT_FOUND,
     SLFY_PASSWORD_NOT_MATCHED,
