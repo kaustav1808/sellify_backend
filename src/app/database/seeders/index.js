@@ -9,13 +9,14 @@ const run = async () => {
         .concat(String(today.getUTCMonth() + 1).padStart(2, '0'))
         .concat('-')
         .concat(String(today.getUTCDate()).padStart(2, '0'))
+
     const seederIndex = await Seeder.findOne({
         created_at: { $regex: dateRegexSearchParam },
     })
 
     if (
         seederIndex &&
-        seederIndex.currentCount + 1 <= Number(process.env.DB_SEEDING_MAX)
+        seederIndex.currentCount + 1 > Number(process.env.DB_SEEDING_MAX)
     ) {
         SLFYLogger.info(
             `Seeding max reach limit to ${seederIndex.currentCount}`
