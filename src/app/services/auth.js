@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const { SLFYError } = require('../core/error')
-const User = require('../models/User')
-const UserToken = require('../models/UserToken')
+const User = require('../database/models/User')
+const UserToken = require('../database/models/UserToken')
 const { SLFY_CORRUPTED_TOKEN, SLFY_INVALID_TOKEN } =
     require('../core/constant').error.AUTH
 
