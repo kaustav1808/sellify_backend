@@ -14,10 +14,6 @@ const getFakerData = () => {
     return { name: fullName, email, username, salt, password }
 }
 
-const run = async () => {
-    const fakerUsers = faker.helpers.multiple(getFakerData, { count: 10 })
+const populationNumber = 10
 
-    return User.insertMany(fakerUsers)
-}
-
-module.exports = run
+module.exports = {data:getFakerData, metaSchema: User, populationNumber}

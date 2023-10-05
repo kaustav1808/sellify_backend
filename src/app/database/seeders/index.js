@@ -1,42 +1,53 @@
-const AuthSeed = require('./Auth.Seed')
-const { SLFYLogger } = require('../../core/log')
-const Seeder = require('../models/Seeder')
+const fs = require('fs')
+const path = require('path')
+const { faker } = require('@faker-js/faker');
+const { SLFYLogger } = require('../../core/log');
+const {seeder} = require("../../../config/db")
+
+const beforeSeederOperation = async (metaSchema) => {
+    if (process.env.NODE_ENV !== 'development') {
+        return metaSchema
+    }
+    if(seeder.dropCollection){
+        SLFYLogger.info(`dropping [Collection]:: ${metaSchema.collection.collectionName}`)
+        await metaSchema.collection.drop()
+     }
+
+     if(seeder.truncateData){
+        SLFYLogger.info(`truncating [Collection]::${metaSchema.collection.collectionName}`)
+        await metaSchema.deleteMany({})
+     }
+
+     return metaSchema
+}
+
 
 const run = async () => {
-    const today = new Date()
-    const dateRegexSearchParam = String(today.getUTCFullYear())
-        .concat('-')
-        .concat(String(today.getUTCMonth() + 1).padStart(2, '0'))
-        .concat('-')
-        .concat(String(today.getUTCDate()).padStart(2, '0'))
+    fs.readdir(__dirname, (err,files)=>{
+        if(err) {
+            throw err;
+        }
+        SLFYLogger.info(`DB seeding start.....`)
+         files.forEach(async(file)=>{          
+           if (file !== 'index.js') {
+             // eslint-disable-next-line import/no-dynamic-require, global-require, prefer-const
+             let {data, metaSchema, populationNumber} = require(path.join(__dirname,file));
+ 
+             metaSchema = await beforeSeederOperation(metaSchema) 
 
-    const seederIndex = await Seeder.findOne({
-        created_at: { $regex: dateRegexSearchParam },
-    })
+             if (populationNumber>1) {
+                const fakerData = faker.helpers.multiple(data, { count: populationNumber })
+                SLFYLogger.info(`Inserting ${populationNumber} of data in [Collection]::${metaSchema.collection.collectionName}`)
+                metaSchema.insertMany(fakerData)
+             }  else{
+                const fakerData =data()
+                SLFYLogger.info(`Inserting ${populationNumber} of data in [Collection]::${metaSchema.collection.collectionName}`)
+                metaSchema.insert(fakerData)
+             }
 
-    if (
-        seederIndex &&
-        seederIndex.currentCount + 1 > Number(process.env.DB_SEEDING_MAX)
-    ) {
-        SLFYLogger.info(
-            `Seeding max reach limit to ${seederIndex.currentCount}`
-        )
-        return
-    }
-
-    SLFYLogger.info('Seeding User data.....')
-    await AuthSeed()
-    SLFYLogger.info('Seeding complete of User data.....')
-
-    if (!seederIndex) {
-        Seeder.create({
-            models: ['User'],
-            created_at: dateRegexSearchParam,
+           }
         })
-    } else {
-        seederIndex.currentCount += 1
-        seederIndex.save()
-    }
+    })
 }
 
 module.exports = run
