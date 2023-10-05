@@ -20,5 +20,5 @@ module.exports = {
     seeder: {
         dropCollection: false,
         truncateData: true,
-    }
+    },
 }

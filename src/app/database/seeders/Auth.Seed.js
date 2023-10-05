@@ -16,4 +16,4 @@ const getFakerData = () => {
 
 const populationNumber = 10
 
-module.exports = {data:getFakerData, metaSchema: User, populationNumber}
+module.exports = { data: getFakerData, metaSchema: User, populationNumber }
