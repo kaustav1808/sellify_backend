@@ -6,7 +6,7 @@ const getFakerData = () => {
     const fullName = faker.person.fullName()
     // eslint-disable-next-line no-unused-vars
     const [firstName, _] = fullName.split(' ')
-    const email = fullName.concat('@yopmail.com')
+    const email = fullName.replace(' ', '').concat('@yopmail.com')
     const username = firstName.concat('_'.concat(faker.string.alpha(10)))
     const salt = bcrypt.genSaltSync(10)
     const password = bcrypt.hashSync('secretpassword', salt)
@@ -14,10 +14,6 @@ const getFakerData = () => {
     return { name: fullName, email, username, salt, password }
 }
 
-const run = async () => {
-    const fakerUsers = faker.helpers.multiple(getFakerData, { count: 10 })
+const populationNumber = 10
 
-    return User.insertMany(fakerUsers)
-}
-
-module.exports = run
+module.exports = { data: getFakerData, metaSchema: User, populationNumber }
