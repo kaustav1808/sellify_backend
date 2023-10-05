@@ -9,7 +9,6 @@ const { allowedOrigins, apiDocSpecification } = require('../config')
 const { SLFYError } = require('./core/error')
 const { logRequest, SLFYLogger } = require('./core/log')
 const { SLFY_ERROR_404 } = require('./core/constant').error
-const seeder = require('./database/seeders')
 
 const app = express()
 const appHost =
@@ -48,10 +47,6 @@ if (process.env.API_DOC_SHOWABLE === 'true') {
     })
 
     SLFYLogger.info(`API docs available at ${appHost}/api-docs`)
-}
-
-if (process.env.DB_SEEDING === 'true') {
-    seeder()
 }
 
 app.use((req, _, next) => {

@@ -17,4 +17,8 @@ module.exports = {
         }?retryWrites=true&w=majority`
         return mongoose.connect(url)
     },
+    seeder: {
+        dropCollection: false,
+        truncateData: true,
+    },
 }
