@@ -44,21 +44,26 @@ const run = async () => {
                 metaSchema = await beforeSeederOperation(metaSchema)
 
                 if (populationNumber > 1) {
-                    const fakerData = faker.helpers.multiple(()=>data(prevSeedData), {
-                        count: populationNumber,
-                    })
+                    const fakerData = faker.helpers.multiple(
+                        () => data(prevSeedData),
+                        {
+                            count: populationNumber,
+                        }
+                    )
                     SLFYLogger.info(
                         `Inserting ${populationNumber} of data in [Collection]::${metaSchema.collection.collectionName}`
                     )
                     metaSchema.insertMany(fakerData)
-                    prevSeedData[metaSchema.collection.collectionName] = fakerData
+                    prevSeedData[metaSchema.collection.collectionName] =
+                        fakerData
                 } else {
                     const fakerData = data(prevSeedData)
                     SLFYLogger.info(
                         `Inserting ${populationNumber} of data in [Collection]::${metaSchema.collection.collectionName}`
                     )
                     metaSchema.insert(fakerData)
-                    prevSeedData[metaSchema.collection.collectionName] = fakerData
+                    prevSeedData[metaSchema.collection.collectionName] =
+                        fakerData
                 }
             }
         })
