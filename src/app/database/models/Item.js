@@ -1,5 +1,11 @@
 const mongoose = require('mongoose')
-const { OPEN, CLOSE, SETTLED, AUCTION, RANGE } = require('../../constants/ItemStatus')
+const {
+    OPEN,
+    CLOSE,
+    SETTLED,
+    AUCTION,
+    RANGE,
+} = require('../../constants/ItemStatus')
 
 const { Schema } = mongoose
 

@@ -8,16 +8,15 @@ const {
     removeItem,
 } = require('../services/item')
 
-const itemList = async (queryParams) =>
-    {
-        const  query = { deleted_at: { $eq: null } }
+const itemList = async (queryParams) => {
+    const query = { deleted_at: { $eq: null } }
 
-        if ([OPEN, SETTLED].includes(queryParams.type)) {
-            // eslint-disable-next-line dot-notation
-            query['status'] = { $eq: queryParams.type }
-        }
-        const items = await Item.find(query)
-        return items.map((item) => getShortItem(item))
+    if ([OPEN, SETTLED].includes(queryParams.type)) {
+        // eslint-disable-next-line dot-notation
+        query['status'] = { $eq: queryParams.type }
+    }
+    const items = await Item.find(query)
+    return items.map((item) => getShortItem(item))
 }
 
 const createItem = async (req) => {
