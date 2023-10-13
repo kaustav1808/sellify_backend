@@ -1,3 +1,4 @@
+const { OPEN, SETTLED } = require('../constants/ItemStatus')
 const Item = require('../database/models/Item')
 const {
     getItemById,
@@ -7,10 +8,17 @@ const {
     removeItem,
 } = require('../services/item')
 
-const itemList = async () =>
-    (await Item.find({ deleted_at: { $eq: null } })).map((item) =>
-        getShortItem(item)
-    )
+const itemList = async (queryParams) =>
+    {
+        const  query = { deleted_at: { $eq: null } }
+
+        if ([OPEN, SETTLED].includes(queryParams.type)) {
+            // eslint-disable-next-line dot-notation
+            query['status'] = { $eq: queryParams.type }
+        }
+        const items = await Item.find(query)
+        return items.map((item) => getShortItem(item))
+}
 
 const createItem = async (req) => {
     const newItem = {}
@@ -19,7 +27,7 @@ const createItem = async (req) => {
     newItem.description = req.body.description
     newItem.tags = req.body.tags
     newItem.sellType = req.body.sellType
-    newItem.status = 'open'
+    newItem.status = OPEN
     newItem.minPrice = Number(req.body.minPrice || 0)
     newItem.maxPrice = Number(req.body.maxPrice)
     newItem.owner = { ...req.user, _id: req.user.id }
