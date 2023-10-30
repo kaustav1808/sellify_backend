@@ -10,12 +10,12 @@ function getRndInteger(min, max) {
 
 const getRandomImages = () =>
     [1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
-      const id = Math.floor(Math.random() * 10  + 100);
-      return {
-        original: `${id}/1000/600/`,
-        thumbnail: `${id}/250/150/`,
-      };
-    });
+        const id = Math.floor(Math.random() * 10 + 100)
+        return {
+            original: `${id}/1000/600/`,
+            thumbnail: `${id}/250/150/`,
+        }
+    })
 
 const getFakerData = (prevSeedData) => {
     const randomInt = getRndInteger(0, items.length - 101)

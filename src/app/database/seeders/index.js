@@ -42,7 +42,7 @@ const run = async () => {
                 ))
 
                 metaSchema = await beforeSeederOperation(metaSchema)
-                
+
                 if (populationNumber > 1) {
                     const fakerData = faker.helpers.multiple(
                         () => data(prevSeedData),
