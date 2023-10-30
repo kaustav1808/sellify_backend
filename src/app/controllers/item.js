@@ -15,7 +15,7 @@ const itemList = async (queryParams) => {
         // eslint-disable-next-line dot-notation
         query['status'] = { $eq: queryParams.type }
     }
-    const items = await Item.find(query)
+    const items = await Item.find(query).sort([['created_at', 'desc']])
     return items.map((item) => getShortItem(item))
 }
 

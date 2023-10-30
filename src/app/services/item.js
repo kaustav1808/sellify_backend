@@ -16,6 +16,8 @@ const getShortItem = (item) => ({
     isArchive: item.is_archive,
     sellType: item.sellType,
     status: item.status,
+    images: item.images,
+    priceOffset: item.priceOffset,
     minPrice: item.minPrice,
     maxPrice: item.maxPrice,
     created_at: item.created_at,

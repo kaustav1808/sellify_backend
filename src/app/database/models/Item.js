@@ -19,6 +19,11 @@ const ItemSchema = Schema({
     is_archive: { type: Boolean, default: false },
     minPrice: Number,
     maxPrice: Number,
+    priceOffset:{type:Number,default:0},
+    images:[{
+        original: String,
+        thumbnail: String,
+      }],
     deleted_at: { type: Date, default: null },
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now },
