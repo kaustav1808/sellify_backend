@@ -1,3 +1,4 @@
+const { OPEN, RANGE, AUCTION } = require('../app/constants/ItemStatus')
 const { getHost, getHostUrl } = require('../app/utils/helpers')
 const definition = require('./swaggerDoc.json')
 
@@ -34,8 +35,8 @@ const getBaseDefinition = () => ({
                     shortDescription: 'skfpsfpo',
                     description: 'abcd',
                     tags: ['a', 'v'],
-                    sellType: 'range',
-                    status: 'open',
+                    sellType: RANGE,
+                    status: OPEN,
                     minPrice: 500,
                     maxPrice: 700,
                     created_at: '2022-11-16T15:11:33.348Z',
@@ -49,8 +50,8 @@ const getBaseDefinition = () => ({
                 shortDescription: 'skfpsfpo',
                 description: 'abcd',
                 tags: ['a', 'v'],
-                sellType: 'range',
-                status: 'open',
+                sellType: RANGE,
+                status: OPEN,
                 minPrice: 500,
                 maxPrice: 700,
                 deleted_at: null,
@@ -64,8 +65,8 @@ const getBaseDefinition = () => ({
                 shortDescription: 'this is short description of fifth item',
                 description: 'this is the description of the fifth item.',
                 tags: ['test a', 'test b', 'test c', 'test d'],
-                sellType: 'auction',
-                status: 'open',
+                sellType: AUCTION,
+                status: OPEN,
                 minPrice: 0,
                 maxPrice: 800.25,
                 created_at: '2023-05-01T10:00:03.098Z',

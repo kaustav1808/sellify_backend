@@ -11,7 +11,12 @@ db.connect()
     .then(() => {
         SLFYLogger.info('Connection to the database successfully done.')
         app.listen(port, () => {
-            seeder()
+            if (
+                process.env.NODE_ENV === 'development' &&
+                process.env.DB_SEEDING === 'true'
+            ) {
+                seeder()
+            }
             SLFYLogger.info(`Express server is listening on port ${port}.`)
         })
     })
