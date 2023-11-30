@@ -16,10 +16,13 @@ const getShortItem = (item) => ({
     isArchive: item.is_archive,
     sellType: item.sellType,
     status: item.status,
+    images: item.images,
+    priceOffset: item.priceOffset,
     minPrice: item.minPrice,
     maxPrice: item.maxPrice,
     created_at: item.created_at,
     updated_at: item.updated_at,
+    owner: item.owner,
 })
 
 const getItemById = async (id) => {
@@ -29,14 +32,14 @@ const getItemById = async (id) => {
         throw new SLFYError(SLFY_INVALID_ITEM, 'The item is not exists', 403)
     }
 
-    return item
+    return getShortItem(item)
 }
 
 const checkValidItemByID = async (id, accessableOwner) => {
     const item = await getItemById(id)
 
     // eslint-disable-next-line no-underscore-dangle
-    if (!item.owner._id.equals(accessableOwner.id))
+    if (!item.owner.id.equals(accessableOwner.id))
         throw new SLFYError(
             SLFY_ACCESSING_INVALID_ITEM,
             'Updating an unauthorized item.',
@@ -46,11 +49,8 @@ const checkValidItemByID = async (id, accessableOwner) => {
     return item
 }
 
-const modifyItemDetails = async (updatable, updatableOwner) => {
-    const modifiableEntity = await checkValidItemByID(
-        updatable.id,
-        updatableOwner
-    )
+const modifyItemDetails = async (updatable, params, updatableOwner) => {
+    const modifiableEntity = await checkValidItemByID(params.id, updatableOwner)
     const minPrice = updatable.minPrice
         ? Number(updatable.minPrice)
         : modifiableEntity.minPrice
@@ -89,7 +89,7 @@ const modifyItemDetails = async (updatable, updatableOwner) => {
 
     modifiableEntity.updated_at = new Date()
 
-    await modifiableEntity.save()
+    await Item.updateOne({ _id: params.id }, modifiableEntity)
 
     return getShortItem(modifiableEntity, true)
 }
@@ -100,7 +100,7 @@ const archiveItem = async (id, updatableOwner) => {
     modifiableEntity.is_archive = true
     modifiableEntity.updated_at = new Date()
 
-    await modifiableEntity.save()
+    await Item.updateOne({ _id: id }, modifiableEntity)
 
     return getShortItem(modifiableEntity, true)
 }
@@ -110,7 +110,7 @@ const removeItem = async (id, updatableOwner) => {
 
     modifiableEntity.deleted_at = new Date()
 
-    await modifiableEntity.save()
+    await Item.updateOne({ _id: id }, modifiableEntity)
 
     return true
 }

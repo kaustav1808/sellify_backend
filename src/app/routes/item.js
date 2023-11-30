@@ -10,6 +10,12 @@ router.get('/', (req, res, done) => {
     /* 	#swagger.tags = ['Items']
         #swagger.description = 'get list of tiems.'
     */
+    /* #swagger.parameters['type'] = {
+        in: 'query',                            
+        description: 'Current item with status "OPEN", "SETTLED", "CLOSED"'                     
+        type: 'string',                  
+        schema: <array>, <object> or <string>    
+    } */
     /*
     #swagger.responses[200] = {
             description: 'Item lists',
@@ -17,7 +23,7 @@ router.get('/', (req, res, done) => {
     }
     */
 
-    ItemController.itemList()
+    ItemController.itemList(req.query)
         .then((result) => res.status(200).json(result))
         .catch((err) => done(err, null))
 })
@@ -90,7 +96,7 @@ router.post(
 )
 
 router.put(
-    '/',
+    '/:id',
     passport.authenticate('verify_token', { session: false }),
     (req, res, done) => {
         /* 	#swagger.tags = ['Items']

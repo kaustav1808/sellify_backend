@@ -162,11 +162,11 @@
                                         },
                                         "code": {
                                             "type": "string",
-                                            "example": "SLFY_USER_NOT_FOUND"
+                                            "example": "SLFY_PASSWORD_NOT_MATCHED"
                                         },
                                         "message$": {
                                             "type": "string",
-                                            "example": "User not found."
+                                            "example": "Password not matched"
                                         }
                                     },
                                     "required": ["status", "code", "message$"],
@@ -185,11 +185,11 @@
                                         },
                                         "code": {
                                             "type": "string",
-                                            "example": "SLFY_USER_NOT_FOUND"
+                                            "example": "SLFY_PASSWORD_NOT_MATCHED"
                                         },
                                         "message$": {
                                             "type": "string",
-                                            "example": "User not found."
+                                            "example": "Password not matched"
                                         }
                                     },
                                     "required": ["status", "code", "message$"],
@@ -213,78 +213,6 @@
                                 "message$": {
                                     "type": "string",
                                     "example": "User not found."
-                                }
-                            },
-                            "required": ["status", "code", "message$"],
-                            "xml": {
-                                "name": "main"
-                            }
-                        }
-                    },
-                    "409": {
-                        "description": "Fail to login",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "status": {
-                                            "type": "number",
-                                            "example": 409
-                                        },
-                                        "code": {
-                                            "type": "string",
-                                            "example": "SLFY_PASSWORD_NOT_MATCHED"
-                                        },
-                                        "message$": {
-                                            "type": "string",
-                                            "example": "Password not matched"
-                                        }
-                                    },
-                                    "required": ["status", "code", "message$"],
-                                    "xml": {
-                                        "name": "main"
-                                    }
-                                }
-                            },
-                            "application/xml": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "status": {
-                                            "type": "number",
-                                            "example": 409
-                                        },
-                                        "code": {
-                                            "type": "string",
-                                            "example": "SLFY_PASSWORD_NOT_MATCHED"
-                                        },
-                                        "message$": {
-                                            "type": "string",
-                                            "example": "Password not matched"
-                                        }
-                                    },
-                                    "required": ["status", "code", "message$"],
-                                    "xml": {
-                                        "name": "main"
-                                    }
-                                }
-                            }
-                        },
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "status": {
-                                    "type": "number",
-                                    "example": 409
-                                },
-                                "code": {
-                                    "type": "string",
-                                    "example": "SLFY_PASSWORD_NOT_MATCHED"
-                                },
-                                "message$": {
-                                    "type": "string",
-                                    "example": "Password not matched"
                                 }
                             },
                             "required": ["status", "code", "message$"],
@@ -1287,11 +1215,11 @@
                         },
                         "sellType": {
                             "type": "string",
-                            "example": "range"
+                            "example": "RANGE"
                         },
                         "status": {
                             "type": "string",
-                            "example": "open"
+                            "example": "OPEN"
                         },
                         "minPrice": {
                             "type": "number",
@@ -1347,11 +1275,11 @@
                     },
                     "sellType": {
                         "type": "string",
-                        "example": "range"
+                        "example": "RANGE"
                     },
                     "status": {
                         "type": "string",
-                        "example": "open"
+                        "example": "OPEN"
                     },
                     "minPrice": {
                         "type": "number",
@@ -1407,11 +1335,11 @@
                     },
                     "sellType": {
                         "type": "string",
-                        "example": "auction"
+                        "example": "AUCTION"
                     },
                     "status": {
                         "type": "string",
-                        "example": "open"
+                        "example": "OPEN"
                     },
                     "minPrice": {
                         "type": "number",
