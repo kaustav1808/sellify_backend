@@ -36,7 +36,7 @@ const getFakerData = (prevSeedData) => {
         images,
         owner: {
             // eslint-disable-next-line no-underscore-dangle
-            _id: randomusers._id,
+            id: randomusers._id,
             email: randomusers.email,
             username: randomusers.username,
         },

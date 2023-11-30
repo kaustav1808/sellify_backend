@@ -30,7 +30,7 @@ const ItemSchema = Schema({
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now },
     owner: {
-        _id: mongoose.ObjectId,
+        id: mongoose.ObjectId,
         email: String,
         username: String,
     },

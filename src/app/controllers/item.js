@@ -29,12 +29,12 @@ const createItem = async (req) => {
     newItem.status = OPEN
     newItem.minPrice = Number(req.body.minPrice || 0)
     newItem.maxPrice = Number(req.body.maxPrice)
-    newItem.owner = { ...req.user, _id: req.user.id }
+    newItem.owner = { ...req.user, id: req.user.id }
 
     return getShortItem(await Item.create(newItem))
 }
 
-const updateItem = async (req) => modifyItemDetails(req.body, req.user)
+const updateItem = async (req) => modifyItemDetails(req.body,req.params,req.user)
 
 const setItemToArchive = async (req) => archiveItem(req.params.id, req.user)
 

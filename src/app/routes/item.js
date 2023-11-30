@@ -96,7 +96,7 @@ router.post(
 )
 
 router.put(
-    '/',
+    '/:id',
     passport.authenticate('verify_token', { session: false }),
     (req, res, done) => {
         /* 	#swagger.tags = ['Items']
