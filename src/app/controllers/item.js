@@ -34,7 +34,8 @@ const createItem = async (req) => {
     return getShortItem(await Item.create(newItem))
 }
 
-const updateItem = async (req) => modifyItemDetails(req.body,req.params,req.user)
+const updateItem = async (req) =>
+    modifyItemDetails(req.body, req.params, req.user)
 
 const setItemToArchive = async (req) => archiveItem(req.params.id, req.user)
 

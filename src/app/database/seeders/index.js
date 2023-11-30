@@ -28,17 +28,16 @@ const beforeSeederOperation = async (metaSchema) => {
 }
 
 const dataSeedMany = async (data, metaSchema, populationNumber) => {
-    const fakerData = faker.helpers.multiple(
-        () => data(prevSeedData),
-        {
-            count: populationNumber,
-        }
-    )
+    const fakerData = faker.helpers.multiple(() => data(prevSeedData), {
+        count: populationNumber,
+    })
     SLFYLogger.info(
         `Inserting ${populationNumber} of data in [Collection]::${metaSchema.collection.collectionName}`
     )
     await metaSchema.insertMany(fakerData)
-    prevSeedData[metaSchema.collection.collectionName] = await metaSchema.find({})
+    prevSeedData[metaSchema.collection.collectionName] = await metaSchema.find(
+        {}
+    )
 }
 
 const dataSeedSingle = async (data, metaSchema, populationNumber) => {
@@ -47,7 +46,9 @@ const dataSeedSingle = async (data, metaSchema, populationNumber) => {
         `Inserting ${populationNumber} of data in [Collection]::${metaSchema.collection.collectionName}`
     )
     await metaSchema.insert(fakerData)
-    prevSeedData[metaSchema.collection.collectionName] = await metaSchema.find({})
+    prevSeedData[metaSchema.collection.collectionName] = await metaSchema.find(
+        {}
+    )
 }
 
 const processFile = async (file) => {
@@ -63,7 +64,7 @@ const processFile = async (file) => {
         if (populationNumber > 1) {
             await dataSeedMany(data, metaSchema, populationNumber)
         } else {
-            await dataSeedSingle(data,metaSchema,populationNumber)
+            await dataSeedSingle(data, metaSchema, populationNumber)
         }
     }
 }
@@ -79,11 +80,9 @@ const run = async () => {
             SLFYLogger.info(`processing ${files[index]}`)
             // eslint-disable-next-line no-await-in-loop
             await processFile(files[index])
-          }
+        }
         SLFYLogger.info(`DB seeding finished.....`)
     })
 }
-
-
 
 module.exports = run

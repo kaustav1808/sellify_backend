@@ -22,7 +22,7 @@ const getShortItem = (item) => ({
     maxPrice: item.maxPrice,
     created_at: item.created_at,
     updated_at: item.updated_at,
-    owner: item.owner
+    owner: item.owner,
 })
 
 const getItemById = async (id) => {
@@ -49,11 +49,8 @@ const checkValidItemByID = async (id, accessableOwner) => {
     return item
 }
 
-const modifyItemDetails = async (updatable, params,updatableOwner) => {
-    const modifiableEntity = await checkValidItemByID(
-        params.id,
-        updatableOwner
-    )
+const modifyItemDetails = async (updatable, params, updatableOwner) => {
+    const modifiableEntity = await checkValidItemByID(params.id, updatableOwner)
     const minPrice = updatable.minPrice
         ? Number(updatable.minPrice)
         : modifiableEntity.minPrice
@@ -92,7 +89,7 @@ const modifyItemDetails = async (updatable, params,updatableOwner) => {
 
     modifiableEntity.updated_at = new Date()
 
-    await Item.updateOne({_id:params.id}, modifiableEntity)
+    await Item.updateOne({ _id: params.id }, modifiableEntity)
 
     return getShortItem(modifiableEntity, true)
 }
