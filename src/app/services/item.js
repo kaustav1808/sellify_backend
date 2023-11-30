@@ -100,7 +100,7 @@ const archiveItem = async (id, updatableOwner) => {
     modifiableEntity.is_archive = true
     modifiableEntity.updated_at = new Date()
 
-    await modifiableEntity.save()
+    await Item.updateOne({ _id: id }, modifiableEntity)
 
     return getShortItem(modifiableEntity, true)
 }
@@ -110,7 +110,7 @@ const removeItem = async (id, updatableOwner) => {
 
     modifiableEntity.deleted_at = new Date()
 
-    await modifiableEntity.save()
+    await Item.updateOne({ _id: id }, modifiableEntity)
 
     return true
 }

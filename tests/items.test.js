@@ -71,7 +71,7 @@ describe('Test for /api/items', () => {
             expect.arrayContaining([
                 expect.objectContaining({
                     key: 'sellType',
-                    message: '"sellType" must be one of [range, auction]',
+                    message: '"sellType" must be one of [RANGE, AUCTION]',
                 }),
                 expect.objectContaining({
                     key: 'sellType',
@@ -89,7 +89,7 @@ describe('Test for /api/items', () => {
                 title: 'test title',
                 shortDescription: 'test shortDescription',
                 description: 'test description',
-                sellType: 'auction',
+                sellType: 'AUCTION',
             })
 
         expect(response.statusCode).toBe(402)
@@ -113,7 +113,7 @@ describe('Test for /api/items', () => {
                 title: 'test title',
                 shortDescription: 'test shortDescription',
                 description: 'test description',
-                sellType: 'auction',
+                sellType: 'AUCTION',
                 maxPrice: 99.99,
             })
 
@@ -130,7 +130,7 @@ describe('Test for /api/items', () => {
         )
     })
 
-    test('It should throw validation error if sellType is `range` and minPrice is empty', async () => {
+    test('It should throw validation error if sellType is `RANGE` and minPrice is empty', async () => {
         const response = await client
             .post('/api/items')
             .set('Authorization', `Bearer ${accessToken}`)
@@ -138,7 +138,7 @@ describe('Test for /api/items', () => {
                 title: 'test title',
                 shortDescription: 'test shortDescription',
                 description: 'test description',
-                sellType: 'range',
+                sellType: 'RANGE',
                 maxPrice: 109.75,
             })
 
@@ -163,7 +163,7 @@ describe('Test for /api/items', () => {
                 title: 'test title',
                 shortDescription: 'test shortDescription',
                 description: 'test description',
-                sellType: 'range',
+                sellType: 'RANGE',
                 maxPrice: 102.75,
                 minPrice: 50.55,
             })
@@ -173,10 +173,10 @@ describe('Test for /api/items', () => {
         expect(response.body.title).toBe('test title')
         expect(response.body.shortDescription).toBe('test shortDescription')
         expect(response.body.description).toBe('test description')
-        expect(response.body.sellType).toBe('range')
+        expect(response.body.sellType).toBe('RANGE')
         expect(response.body.maxPrice).toBe(102.75)
         expect(response.body.minPrice).toBe(50.55)
-        expect(response.body.status).toBe('open')
+        expect(response.body.status).toBe('OPEN')
     })
 
     test('It should successfully fetch list of items', async () => {
@@ -190,11 +190,11 @@ describe('Test for /api/items', () => {
         expect(typeof firstItem.title).toBe('string')
         expect(typeof firstItem.shortDescription).toBe('string')
         expect(typeof firstItem.description).toBe('string')
-        expect(['range', 'auction']).toContain(firstItem.sellType)
+        expect(['RANGE', 'AUCTION']).toContain(firstItem.sellType)
         expect(typeof firstItem.maxPrice).toEqual('number')
         expect(typeof firstItem.minPrice).toEqual('number')
         expect(firstItem.minPrice <= firstItem.maxPrice).toBe(true)
-        expect(['open', 'close']).toContain(firstItem.status)
+        expect(['OPEN', 'CLOSE']).toContain(firstItem.status)
 
         uniqueItem = firstItem
     })
@@ -210,11 +210,11 @@ describe('Test for /api/items', () => {
         expect(typeof firstItem.title).toBe('string')
         expect(typeof firstItem.shortDescription).toBe('string')
         expect(typeof firstItem.description).toBe('string')
-        expect(['range', 'auction']).toContain(firstItem.sellType)
+        expect(['RANGE', 'AUCTION']).toContain(firstItem.sellType)
         expect(typeof firstItem.maxPrice).toEqual('number')
         expect(typeof firstItem.minPrice).toEqual('number')
         expect(firstItem.minPrice <= firstItem.maxPrice).toBe(true)
-        expect(['open', 'close']).toContain(firstItem.status)
+        expect(['OPEN', 'CLOSE']).toContain(firstItem.status)
 
         uniqueItem = firstItem
     })
@@ -222,7 +222,7 @@ describe('Test for /api/items', () => {
     test('It should update the title, description, shortDescription of the desired item', async () => {
         console.log(uniqueItem)
         const response = await client
-            .put(`/api/items/`)
+            .put(`/api/items/${uniqueItem.id}`)
             .set('Authorization', `Bearer ${accessToken}`)
             .send({
                 id: uniqueItem._id,
@@ -241,7 +241,7 @@ describe('Test for /api/items', () => {
 
     test('It will given validation error while update the minPrice. When minPrice will be greater than maxprice of the desired item', async () => {
         const response = await client
-            .put(`/api/items/`)
+            .put(`/api/items/${uniqueItem.id}`)
             .set('Authorization', `Bearer ${accessToken}`)
             .send({
                 id: uniqueItem._id,
@@ -258,7 +258,7 @@ describe('Test for /api/items', () => {
 
     test('It should update the minPrice and maxPrice of the desired item', async () => {
         const response = await client
-            .put(`/api/items/`)
+            .put(`/api/items/${uniqueItem.id}`)
             .set('Authorization', `Bearer ${accessToken}`)
             .send({
                 id: uniqueItem._id,
@@ -273,7 +273,7 @@ describe('Test for /api/items', () => {
 
     test('It should archive the desired item', async () => {
         const response = await client
-            .get(`/api/items/set-archive/${uniqueItem._id}`)
+            .get(`/api/items/set-archive/${uniqueItem.id}`)
             .set('Authorization', `Bearer ${accessToken}`)
 
         expect(response.statusCode).toBe(200)
@@ -282,7 +282,7 @@ describe('Test for /api/items', () => {
 
     test('It should soft delete the desired item', async () => {
         const response = await client
-            .delete(`/api/items/${uniqueItem._id}`)
+            .delete(`/api/items/${uniqueItem.id}`)
             .set('Authorization', `Bearer ${accessToken}`)
 
         expect(response.statusCode).toBe(200)

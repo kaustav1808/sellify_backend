@@ -6,8 +6,8 @@
     "scripts": {
         "dev": "nodemon src",
         "start": "node src",
-        "test": "jest --verbose --silent",
-        "test:watch": "jest --verbose --watchAll",
+        "test": "jest --runInBand  --verbose --silent",
+        "test:watch": "jest --runInBand  --verbose --watchAll",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",
