@@ -91,7 +91,7 @@ const modifyItemDetails = async (updatable, params, updatableOwner) => {
 
     await Item.updateOne({ _id: params.id }, modifiableEntity)
 
-    return getShortItem(modifiableEntity, true)
+    return modifiableEntity
 }
 
 const archiveItem = async (id, updatableOwner) => {
