@@ -84,7 +84,7 @@ const destroyCurrentToken = async (token) => {
         accesstoken: token,
     })
 
-    if(!dbExists) return;
+    if (!dbExists) return
 
     // eslint-disable-next-line consistent-return
     return dbExists.deleteOne()
