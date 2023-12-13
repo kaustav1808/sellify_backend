@@ -16,7 +16,7 @@ router.get('/', (req, res, done) => {
     */
 
     tagController
-        .list(req.query)
+        .listtag(req.query)
         .then((result) => res.status(200).json(result))
         .catch((err) => done(err, null))
 })
@@ -61,7 +61,7 @@ router.post(
             }
         */
         tagController
-            .create(req)
+            .createTag(req)
             .then((result) => res.status(201).json(result))
             .catch((err) => done(err, null))
     }

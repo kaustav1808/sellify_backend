@@ -1,8 +1,13 @@
-const list = () => {}
+const {
+    create,
+} = require('../services/tag')
 
-const create = () => {}
+
+const listtag = () => {}
+
+const createTag = async(req) => create(req)
 
 module.exports = {
-    list,
-    create,
+    listtag,
+    createTag,
 }
