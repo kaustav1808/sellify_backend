@@ -13,4 +13,4 @@ const TagSchema = Schema({
     },
 })
 
-module.exports = mongoose.model('TagSchema', TagSchema)
+module.exports = mongoose.model('Tags', TagSchema)
