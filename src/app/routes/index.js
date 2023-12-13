@@ -7,6 +7,7 @@ const userRouter = require('./user')
 const authRouter = require('./auth')
 const auctionRouter = require('./auction')
 const itemRouter = require('./item')
+const tagRouter = require('./tag')
 
 router.get('/', (req, res) => {
     /* 	#swagger.tags = ['Baseurl']
@@ -29,6 +30,10 @@ router.use(
     '/auction',
     passport.authenticate('verify_token', { session: false }),
     auctionRouter
+)
+router.use(
+    '/tags',
+    tagRouter
 )
 
 router.use('/items', itemRouter)
