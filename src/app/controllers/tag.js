@@ -1,13 +1,8 @@
+const list = () => {}
 
-const list = () =>{
-
-}
-
-const create = () => {
-
-}
-
+const create = () => {}
 
 module.exports = {
-  list, create
+    list,
+    create,
 }

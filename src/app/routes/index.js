@@ -31,10 +31,7 @@ router.use(
     passport.authenticate('verify_token', { session: false }),
     auctionRouter
 )
-router.use(
-    '/tags',
-    tagRouter
-)
+router.use('/tags', tagRouter)
 
 router.use('/items', itemRouter)
 

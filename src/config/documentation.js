@@ -72,19 +72,20 @@ const getBaseDefinition = () => ({
                 created_at: '2023-05-01T10:00:03.098Z',
                 updated_at: '2023-05-01T10:06:07.215Z',
             },
-            tags: [{
-              id:"65687faf99cc0b2da09bb3aa",
-              tag:"tag 1"
+            tags: [
+                {
+                    id: '65687faf99cc0b2da09bb3aa',
+                    tag: 'tag 1',
+                },
+                {
+                    id: '65687faf99cc0b2da09bb3aa',
+                    tag: 'tag 2',
+                },
+            ],
+            tag: {
+                id: '65687faf99cc0b2da09bb3aa',
+                tag: 'tag 1',
             },
-            {
-                id:"65687faf99cc0b2da09bb3aa",
-                tag:"tag 2"
-              }
-        ],
-        tag:{
-            id:"65687faf99cc0b2da09bb3aa",
-            tag:"tag 1"
-          }
         },
     },
 })

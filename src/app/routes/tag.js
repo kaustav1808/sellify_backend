@@ -15,7 +15,8 @@ router.get('/', (req, res, done) => {
     }
     */
 
-    tagController.list(req.query)
+    tagController
+        .list(req.query)
         .then((result) => res.status(200).json(result))
         .catch((err) => done(err, null))
 })
@@ -59,11 +60,11 @@ router.post(
                     }        
             }
         */
-            tagController.create(req)
+        tagController
+            .create(req)
             .then((result) => res.status(201).json(result))
             .catch((err) => done(err, null))
     }
 )
-
 
 module.exports = router
