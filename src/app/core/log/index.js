@@ -17,7 +17,7 @@ const infoLogger = createLogger({
     transports: [
         new transports.File({
             name: 'info-file',
-            filename: `log/${(new Date()).toDateString()}-filelog-info.log`,
+            filename: `log/${new Date().toDateString()}-filelog-info.log`,
         }),
         new transports.Console(),
     ],
@@ -29,7 +29,7 @@ const errorLogger = createLogger({
     transports: [
         new transports.File({
             name: 'error-file',
-            filename: `log/${(new Date()).toDateString()}-filelog-error.log`,
+            filename: `log/${new Date().toDateString()}-filelog-error.log`,
         }),
         new transports.Console(),
     ],
