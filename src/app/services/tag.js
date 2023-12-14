@@ -5,17 +5,41 @@ const Tag = require('../database/models/Tag')
 const { getRandomColor } = require('../utils/helpers')
 
 const list = async (query) => {
-    const { tag } = query
+    // eslint-disable-next-line prefer-const
+    let { tag, page } = query
     const searchQuery = {}
 
     if (tag && tag.trim().length)
         searchQuery.tag = { $regex: new RegExp(tag.trim()), $options: 'i' }
 
-    return Tag.find(searchQuery).sort({created_at:"desc"}).limit(30).select({
+    if(!page) page=1
+    else page = Number(page)
+
+    if (page < 1) page = 1
+
+    const totalCount = await Tag.countDocuments(searchQuery)
+    const totalPage  = Math.floor(totalCount/30);
+
+    if(!totalPage) page = 1
+    else if (page > totalPage) page = totalPage
+
+    const res = await Tag.find(searchQuery)
+              .sort({ created_at: 'desc' })
+              .limit(30)
+              .skip((page-1)*30)
+              .select({
         tag: 1,
         colorCode: 1,
         _id: 0,
     })
+
+    return {
+        data: res,
+        previouspage: page -1 <1 ? 1 : page - 1,
+        currentPage: page,
+        nextPage: page + 1 >totalPage ? totalPage: page+1,
+        total:totalCount
+    }
 }
 
 const create = async (req) => {
