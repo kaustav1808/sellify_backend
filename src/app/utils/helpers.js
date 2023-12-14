@@ -22,8 +22,8 @@ const getHostUrl = (url) => {
 }
 
 const getRandomColor = () => {
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
-    return `#${  randomColor}`;
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16)
+    return `#${randomColor}`
 }
 
 module.exports = { isEmpty, getPort, getHost, getHostUrl, getRandomColor }

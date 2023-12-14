@@ -5,12 +5,13 @@ const Tag = require('../database/models/Tag')
 const { getRandomColor } = require('../utils/helpers')
 
 const list = async (query) => {
-    const {tag} = query
+    const { tag } = query
     const searchQuery = {}
 
-    if ((tag && tag.trim().length)) searchQuery.tag = { $regex: new RegExp(tag.trim()), $options: 'i' }
+    if (tag && tag.trim().length)
+        searchQuery.tag = { $regex: new RegExp(tag.trim()), $options: 'i' }
 
-    return Tag.find(searchQuery, {limit: 30})
+    return Tag.find(searchQuery, { limit: 30 })
 }
 
 const create = async (req) => {
