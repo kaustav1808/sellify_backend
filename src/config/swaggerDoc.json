@@ -685,6 +685,142 @@
                 }
             }
         },
+        "/tags/": {
+            "get": {
+                "tags": ["Tags"],
+                "description": "get list of Tags.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Item lists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/tags"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/tags"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Tags"],
+                "description": "Create a new tag.",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/tag"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/tag"
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 402
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_VALIDATION_ERROR"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "properties": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "status",
+                                        "code",
+                                        "message",
+                                        "errors"
+                                    ],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": 402
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "SLFY_VALIDATION_ERROR"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "properties": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "status",
+                                        "code",
+                                        "message",
+                                        "errors"
+                                    ],
+                                    "xml": {
+                                        "name": "main"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "tag": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["tag"]
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/items/": {
             "get": {
                 "tags": ["Items"],
@@ -847,11 +983,53 @@
                         }
                     }
                 }
+            }
+        },
+        "/items/{id}": {
+            "get": {
+                "tags": ["Items"],
+                "description": "get item.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item lists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "put": {
                 "tags": ["Items"],
                 "description": "Update an new item.",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -964,39 +1142,6 @@
                                     "sellType",
                                     "maxPrice"
                                 ]
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/items/{id}": {
-            "get": {
-                "tags": ["Items"],
-                "description": "get item.",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Item lists",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Item"
-                                }
-                            },
-                            "application/xml": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Item"
-                                }
                             }
                         }
                     }
@@ -1360,6 +1505,41 @@
                 },
                 "xml": {
                     "name": "ShortItem"
+                }
+            },
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "example": "65687faf99cc0b2da09bb3aa"
+                        },
+                        "tag": {
+                            "type": "string",
+                            "example": "tag 2"
+                        }
+                    }
+                },
+                "xml": {
+                    "name": "tags"
+                }
+            },
+            "tag": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "65687faf99cc0b2da09bb3aa"
+                    },
+                    "tag": {
+                        "type": "string",
+                        "example": "tag 1"
+                    }
+                },
+                "xml": {
+                    "name": "tag"
                 }
             }
         },

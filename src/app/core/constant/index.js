@@ -21,6 +21,10 @@ const error = {
         SLFY_MAXPRICE_GREATER_THAN_MIN_PRICE:
             'SLFY_MAXPRICE_GREATER_THAN_MIN_PRICE',
     },
+    TAG: {
+        SLFY_TAG_CREATE_ERROR: 'SLFY_TAG_CREATE_ERROR',
+        SLFY_TAG_EXISTS_ERROR: 'SLFY_TAG_EXISTS_ERROR',
+    },
 }
 
 module.exports = { error }
