@@ -11,8 +11,11 @@ const list = async (query) => {
     if (tag && tag.trim().length)
         searchQuery.tag = { $regex: new RegExp(tag.trim()), $options: 'i' }
 
-    return Tag.find(searchQuery, { limit: 30 })
-              .select({ tag: 1, colorCode:1, _id: 0 })
+    return Tag.find(searchQuery).sort({created_at:"desc"}).limit(30).select({
+        tag: 1,
+        colorCode: 1,
+        _id: 0,
+    })
 }
 
 const create = async (req) => {
