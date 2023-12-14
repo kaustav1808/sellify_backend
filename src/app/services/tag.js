@@ -12,6 +12,7 @@ const list = async (query) => {
         searchQuery.tag = { $regex: new RegExp(tag.trim()), $options: 'i' }
 
     return Tag.find(searchQuery, { limit: 30 })
+              .select({ tag: 1, colorCode:1, _id: 0 })
 }
 
 const create = async (req) => {
