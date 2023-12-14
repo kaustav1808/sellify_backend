@@ -4,6 +4,7 @@ const { Schema } = mongoose
 
 const TagSchema = Schema({
     tag: String,
+    colorCode: String,
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now },
     owner: {

@@ -1,6 +1,6 @@
-const { create } = require('../services/tag')
+const { create, list } = require('../services/tag')
 
-const listtag = () => {}
+const listtag = (query) => list(query)
 
 const createTag = async (req) => create(req)
 

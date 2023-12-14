@@ -2,8 +2,16 @@ const SLFYError = require('../core/error/SLFYError')
 const { SLFY_TAG_CREATE_ERROR, SLFY_TAG_EXISTS_ERROR } =
     require('../core/constant').error.TAG
 const Tag = require('../database/models/Tag')
+const { getRandomColor } = require('../utils/helpers')
 
-const list = () => {}
+const list = async (query) => {
+    const {tag} = query
+    const searchQuery = {}
+
+    if ((tag && tag.trim().length)) searchQuery.tag = { $regex: new RegExp(tag.trim()), $options: 'i' }
+
+    return Tag.find(searchQuery, {limit: 30})
+}
 
 const create = async (req) => {
     const { tag } = req.body
@@ -35,6 +43,7 @@ const create = async (req) => {
 
     const newtag = await Tag.create({
         tag: tag.trim(),
+        colorCode: getRandomColor(),
         owner: { ...req.user, id: req.user.id },
     })
     return { id: newtag.id, tag: newtag.tag }
