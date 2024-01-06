@@ -9,11 +9,13 @@ const {
 
 const { Schema } = mongoose
 
+const tagSchema = Schema({ tag: String, colorCode: String }, { _id: false })
+
 const ItemSchema = Schema({
     title: String,
     shortDescription: String,
     description: String,
-    tags: [String],
+    tags: [tagSchema],
     sellType: { type: String, enum: [RANGE, AUCTION] },
     status: { type: String, enum: [OPEN, CLOSE, SETTLED] },
     is_archive: { type: Boolean, default: false },

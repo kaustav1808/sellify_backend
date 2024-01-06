@@ -1,5 +1,6 @@
 const { SLFYError } = require('../core/error')
 const Item = require('../database/models/Item')
+const { getTags } = require('../utils/helpers')
 const {
     SLFY_ACCESSING_INVALID_ITEM,
     SLFY_INVALID_ITEM,
@@ -12,7 +13,7 @@ const getShortItem = (item) => ({
     title: item.title,
     shortDescription: item.shortDescription,
     description: item.description,
-    tags: item.tags,
+    tags: getTags(item.tags),
     isArchive: item.is_archive,
     sellType: item.sellType,
     status: item.status,
@@ -63,7 +64,7 @@ const modifyItemDetails = async (updatable, params, updatableOwner) => {
         modifiableEntity.shortDescription = updatable.shortDescription
     if (updatable.description)
         modifiableEntity.description = updatable.description
-    if (updatable.tags) modifiableEntity.tags = updatable.tags
+    if (updatable.tags) modifiableEntity.tags = getTags(updatable.tags)
     if (updatable.minPrice) {
         if (minPrice > maxPrice) {
             throw new SLFYError(
