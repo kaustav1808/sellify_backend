@@ -26,4 +26,10 @@ const getRandomColor = () => {
     return `#${randomColor}`
 }
 
-module.exports = { isEmpty, getPort, getHost, getHostUrl, getRandomColor }
+const getTags = (tags) => {
+   if(!tags.length) return []
+
+   return tags.map(o=> typeof o === 'object' ? o : {tag:o,colorCode:getRandomColor()})
+}
+
+module.exports = { isEmpty, getPort, getHost, getHostUrl, getRandomColor, getTags }

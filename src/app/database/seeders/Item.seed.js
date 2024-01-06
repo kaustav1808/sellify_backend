@@ -1,6 +1,7 @@
 const Item = require('../models/Item')
 const items = require('../../../../items.json')
 const { OPEN, RANGE } = require('../../constants/ItemStatus')
+const { getTags } = require('../../utils/helpers')
 
 const populationNumber = 500
 
@@ -28,7 +29,7 @@ const getFakerData = (prevSeedData) => {
         title: item.name,
         shortDescription: item.slug,
         description: item.description,
-        tags: item.tags,
+        tags: getTags(item.tags),
         sellType: RANGE,
         status: OPEN,
         minPrice: Math.floor(item.price * 100),

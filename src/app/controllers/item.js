@@ -7,6 +7,7 @@ const {
     archiveItem,
     removeItem,
 } = require('../services/item')
+const { getTags } = require('../utils/helpers')
 
 const itemList = async (queryParams) => {
     const query = { deleted_at: { $eq: null } }
@@ -24,7 +25,7 @@ const createItem = async (req) => {
     newItem.title = req.body.title
     newItem.shortDescription = req.body.shortDescription
     newItem.description = req.body.description
-    newItem.tags = req.body.tags
+    newItem.tags = getTags(req.body.tags)
     newItem.sellType = req.body.sellType
     newItem.status = OPEN
     newItem.minPrice = Number(req.body.minPrice || 0)
