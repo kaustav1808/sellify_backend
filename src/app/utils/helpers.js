@@ -1,3 +1,5 @@
+const { lightColors } = require('../../../data/lightColor')
+
 const isEmpty = (obj) =>
     obj &&
     Object.keys(obj).length === 0 &&
@@ -22,8 +24,8 @@ const getHostUrl = (url) => {
 }
 
 const getRandomColor = () => {
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16)
-    return `#${randomColor}`
+    const colors = lightColors
+    return colors[Math.floor(Math.random() * (colors.length - 1 - 0)) + 0]
 }
 
 const getTags = (tags) => {

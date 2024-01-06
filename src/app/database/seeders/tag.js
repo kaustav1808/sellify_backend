@@ -1,5 +1,5 @@
 const Tag = require('../models/Tag')
-const Tags = require('../../../../tags.json')
+const Tags = require('../../../../data/tags.json')
 const { getRandomColor } = require('../../utils/helpers')
 
 const populationNumber = 300
