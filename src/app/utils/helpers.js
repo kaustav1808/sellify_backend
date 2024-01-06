@@ -1,4 +1,4 @@
-const { lightColors } = require("../../../data/lightColor")
+const { lightColors } = require('../../../data/lightColor')
 
 const isEmpty = (obj) =>
     obj &&
