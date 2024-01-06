@@ -1,5 +1,5 @@
 const Item = require('../models/Item')
-const items = require('../../../../items.json')
+const items = require('../../../../data/items.json')
 const { OPEN, RANGE } = require('../../constants/ItemStatus')
 const { getTags } = require('../../utils/helpers')
 
