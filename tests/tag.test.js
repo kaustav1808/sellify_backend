@@ -48,7 +48,10 @@ describe('Test for /api/tags', () => {
     })
 
     test('It should successfully fetch the desired tag', async () => {
-        const response = await client.get(`/api/tags`).query({tag:"test tag", page:1}).send()
+        const response = await client
+            .get(`/api/tags`)
+            .query({ tag: 'test tag', page: 1 })
+            .send()
 
         // currently by passing this test
         expect(response.statusCode).toBe(200)
@@ -58,7 +61,6 @@ describe('Test for /api/tags', () => {
         expect(firstItem.tag).toBe('test tag')
         expect(typeof firstItem.colorCode).toBe('string')
     })
-
 })
 
 // eslint-disable-next-line no-undef

@@ -9,7 +9,7 @@ const {
 
 const { Schema } = mongoose
 
-const tagSchema = Schema({tag: String, colorCode:String}, {_id:false})
+const tagSchema = Schema({ tag: String, colorCode: String }, { _id: false })
 
 const ItemSchema = Schema({
     title: String,

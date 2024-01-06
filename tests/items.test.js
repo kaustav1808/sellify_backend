@@ -166,7 +166,7 @@ describe('Test for /api/items', () => {
                 sellType: 'RANGE',
                 maxPrice: 102.75,
                 minPrice: 50.55,
-                tags: ["tag 1", "tag 2"]
+                tags: ['tag 1', 'tag 2'],
             })
 
         expect(response.statusCode).toBe(201)
@@ -178,8 +178,8 @@ describe('Test for /api/items', () => {
         expect(response.body.maxPrice).toBe(102.75)
         expect(response.body.minPrice).toBe(50.55)
         expect(response.body.status).toBe('OPEN')
-        expect(response.body.tags[0]).toHaveProperty("tag", "tag 1")
-        expect(response.body.tags[1]).toHaveProperty("tag", "tag 2")
+        expect(response.body.tags[0]).toHaveProperty('tag', 'tag 1')
+        expect(response.body.tags[1]).toHaveProperty('tag', 'tag 2')
     })
 
     test('It should successfully fetch list of items', async () => {
